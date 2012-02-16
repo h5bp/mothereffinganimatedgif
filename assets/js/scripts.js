@@ -4,25 +4,27 @@
     App.MAX_BYTES = 102400; // 100 KB
     App.timeline = [];
 
-    $('#dropArea').on('dragenter', function(e){
-        e.preventDefault();
-    }).on('dragexit', function(e){
-        e.preventDefault();
-    }).on('dragover', function(e){
+    $('#dropArea').on('dragover', function(e){
+        e.stopPropagation();
         e.preventDefault();
     }).on('drop', function(e){
+        e.stopPropagation();
         e.preventDefault();
-        var data = e.dataTransfer,
-            files = data.files,
-            reader = {};
-        for(var file in files){
-            // file.fileName
-            reader = new FileReader();
+
+        var files = e.originalEvent.dataTransfer.files;
+        for (var i = 0, f; f = files[i]; i++) {
+            console.log(files[i]);
+            var reader = new FileReader();
             reader.onloadend = function(e){
-                var data = event.currentTarget.result.substr(0, App.MAX_BYTES);
+                var img = document.createElement("img");
+                img.src = e.target.result;
+
+                var li = document.createElement("li");
+                $(img).prependTo(li);
+
+                $(li).prependTo('#inimglist');
             };
-            reader.readAsBinaryString(file);
-            //reader.readAsDataURL(file);
+            reader.readAsDataURL(files[i]);
         }
     });
 
