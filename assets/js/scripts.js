@@ -1,23 +1,24 @@
 (function(window, $){
     
-    var MFAnimatedGIF = function(images, delay, repeat, width, height) {
+    var MFAnimatedGIF = function(opts) {
         var encoder;
 
-        var _initialize = function(images, delay, repeat, width, height) {
+        var _initialize = function(opts) {
+
             var canvas = document.createElement("canvas");
             var context = canvas.getContext('2d');
 
             encoder = new GIFEncoder();
-            encoder.setRepeat(repeat);
-            encoder.setDelay(delay);
-            canvas.width = width;
-            canvas.height = height;
-            encoder.setSize(width, height);
+            encoder.setRepeat(opts.repeat);
+            encoder.setDelay(opts.delay);
+            canvas.width =  opts.width;
+            canvas.height = opts.height;
+            encoder.setSize(opts.width, opts.height);
 
             encoder.start();
 
-            for(var i=0; i<images.length; i++) {
-                var animframe = images[i];
+            for(var i=0; i<opts.images.length; i++) {
+                var animframe = opts.images[i];
                 var ctx = canvas.getContext('2d');
 
                 ctx.drawImage(animframe, 0, 0, animframe.width, animframe.height, 0, 0, canvas.width, canvas.height);
@@ -45,7 +46,7 @@
             return window.URL.createObjectURL(bb.getBlob("image/gif"));
         };
 
-        _initialize(images, delay, repeat, width, height);
+        _initialize(opts);
 
         return {
             dataURL: _dataURL,
@@ -137,7 +138,13 @@
     
     $('.play').on('click', function(e) {
 
-        var mfAnimatedGIF = new MFAnimatedGIF(App.timeline, 300, false, 75, 75);
+        var mfAnimatedGIF = new MFAnimatedGIF({
+            images: App.timeline, 
+            delay : 300, 
+            repeat: false, 
+            height: 75, 
+            width : 75
+        });
 
         $('#animresult').attr('src', mfAnimatedGIF.dataURL());
 
