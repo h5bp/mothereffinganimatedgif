@@ -1,5 +1,5 @@
 
-    
+    // handles interfacing with GIFEncoder
     var MFAnimatedGIF = function(opts) {
         var encoder;
 
@@ -55,17 +55,20 @@
     };
 
     var App = {};
-    App.MAX_BYTES = 2097152; // 2MB
+    App.MAX_BYTES = 2*1024*1024; // 2MB
     App.timeline = [];
+
     var fileList = $("#inimglist");
     var body = $("body");
         
     // Bail out if the browser doesn't support required features
-    if (!FileReaderJS.enabled) {
+    // blobbuilder and a[download] are not required, as there is a fallback
+    if (!FileReaderJS.enabled || !Modernizr.draganddrop) {
         body.addClass("disabled");
         return;
     }
     
+    // drag and drop setup.
     var opts = {
         accept: 'image/*',
         on: {
@@ -94,10 +97,12 @@
             }
         }
     };
-
+    // the library handles most of the dnd bits.
     FileReaderJS.setupDrop(document.body, opts);
     FileReaderJS.setupClipboard(document.body, opts);
 
+
+    // test to see if we can do cool download or fallback style.
         Modernizr.addTest({
             // BlobBuilder
             "blobbuilder": function() {
@@ -130,12 +135,14 @@
     
     var finalImage = $("#animresult");
     $(".clear").on('click', function() {
-        finalImage.attr("src", "void(0)").hide();
+        finalImage.attr("src", "about:blank").hide();
         fileList.empty();
         App.timeline = [];
         return false;
     });
     
+
+    // kick off GIF generation and download prep
     $('.play').on('click', function(e) {
 
         var mfAnimatedGIF = new MFAnimatedGIF({
