@@ -1,4 +1,4 @@
-(function(window, $){
+
     
     var MFAnimatedGIF = function(opts) {
         var encoder;
@@ -142,8 +142,10 @@
             images: App.timeline, 
             delay : 300, 
             repeat: false, 
-            height: 75, 
-            width : 75
+
+            // use dimensions from first image as default
+            height: App.timeline[0].height, 
+            width : App.timeline[0].width 
         });
 
         $('#animresult').attr('src', mfAnimatedGIF.dataURL());
@@ -187,4 +189,3 @@
         return false;
     }); // eo $('.play').on('click', function(e) {
 
-})(window, jQuery); // eo IIFE
