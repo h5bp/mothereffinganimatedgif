@@ -1,0 +1,44 @@
+CACHE MANIFEST
+# Version Control
+# v0.0.0 00-00-0000
+
+# Handy Dandy Developer Tools
+# CHROME chrome://appcache-internals 
+# FIREFOX about:cache
+# Charles - Web Debugging Proxy App
+# http://charlesproxy.com
+
+#CACHE - explicit entries
+#NETWORK - URL online whitelist entries
+#FALLBACK - ish entries (i.e. "In case shit happens")
+
+
+CACHE:
+# Fonts
+http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,800
+
+#css
+assets/css/styles.css
+
+#img
+assets/img/logo.gif
+
+# jQuery
+http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
+assets/js/libraries/jquery-1.7.1.min.js
+
+# LZWEncoder JS
+assets/js/libraries/LZWEncoder.js
+
+# NeuQuant JS
+assets/js/libraries/NeuQuant.js
+
+# GIFEncoder JS
+assets/js/libraries/GIFEncoder.js
+
+# Scripts JS
+assets/js/scripts.js
+
+NETWORK:
+
+FALLBACK:
