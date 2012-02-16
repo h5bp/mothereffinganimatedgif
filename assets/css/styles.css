@@ -76,6 +76,18 @@ body {
     height: 100%;
 }
 
+body.drag .top, body.hasfiles .top {
+    top: 0;
+}
+.top {
+    position:relative;
+    top:-300px;
+    -webkit-transition: top linear .1s;
+    -moz-transition: top linear .1s;
+    -ms-transition: top linear .1s;
+    transition: top linear .1s;
+}
+
 	header 
 {	display: block;
 	width: 100%;
@@ -119,8 +131,6 @@ body {
 	#main 
 {	width: 100%; }
 	
-		#main .top
-	{	position: relative; }
 
 		#main .top .files 
 	{	display: block;
