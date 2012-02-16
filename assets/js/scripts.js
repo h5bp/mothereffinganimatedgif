@@ -10,6 +10,10 @@
             on: {
                 loadend: function(e, file) {
                     fileList.append("<li><img src='"+e.target.result+"' /></li>");
+                    
+                    var originalimg = new Image();
+                    originalimg.src = e.target.result;
+                    App.timeline.push(originalimg);
                 },
                 groupstart: function(group) {
                 },
