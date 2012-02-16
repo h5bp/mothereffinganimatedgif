@@ -79,6 +79,13 @@ body {
 body.drag .top, body.hasfiles .top {
     top: 0;
 }
+
+.nosupport, body.disabled .support {
+    display:none;
+}
+body.disabled .nosupport{
+    display:block;
+}
 .top {
     position:relative;
     top:-300px;

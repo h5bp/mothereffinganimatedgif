@@ -5,6 +5,15 @@
     App.timeline = [];
 
     $(function() {
+        
+        var body = $("body");
+        
+        // Bail out if the browser doesn't support required features
+        if (!FileReaderJS.enabled) {
+            body.addClass("disabled");
+            return;
+        }
+        
         var fileList = $("#inimglist");
         var opts = {
             accept: 'image/*',
