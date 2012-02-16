@@ -223,13 +223,30 @@ body.disabled .nosupport{
 		margin: 15% 0 0 0;
 		text-align: center;
 		text-shadow: 0 -2px 0 rgba(255,255,255,0.25), -2px 0 0 rgba(255,255,255,0.15), 2px 0 0 rgba(255,255,255,0.15);
-		font-size: 42px; }
-        
-        
-    body.drag #dropArea h2{
-        color: #393;
+		font-size: 42px; 
+    }
+    #dropArea h2 span {
+    
+        background: rgba(255, 255, 255, .8);
+        border-radius: 5px;
+        padding: 40px;
+        border: solid 10px transparent;
+    }
+    #dropArea h2 em {
+        font-style:normal;
     }
     
+    /* Should we hide the drop text once some have dropped?
+    body.hasfiles #dropArea h2 {
+        display:none;
+    }    
+    */
+    body.drag #dropArea h2 em{
+        color: #393;
+    }
+    body.drag #dropArea h2 span {
+        border-color: #4a4;
+    }
     #inimglist li.error, #inimglist li.skip{
         color: red;
         text-align: center;
