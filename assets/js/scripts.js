@@ -48,7 +48,14 @@
         FileReaderJS.setupClipboard(document.body, opts);
 
     });
-
+    
+    var finalImage = $("#animresult");
+    $(".clear").on('click', function() {
+        finalImage.attr("src", "void(0)").hide();
+        App.timeline = [];
+        return false;
+    });
+    
     $('.play').on('click', function(e) {
         var canvas = document.createElement("canvas");
         var context = canvas.getContext('2d');
@@ -65,12 +72,11 @@
         for (var i = 0; i < App.timeline.length; i++) {
             var animframe = App.timeline[i];
             context.drawImage(animframe, 0, 0, animframe.width, animframe.height, 0, 0, canvas.width, canvas.height);
-            encoder.addFrame(context);    
-        
+            encoder.addFrame(context);
         }
         
         encoder.finish();
-        $('#animresult').attr('src', 'data:image/gif;base64,'+$.base64.encode(encoder.stream().getData()));
+        finalImage.attr('src', 'data:image/gif;base64,'+$.base64.encode(encoder.stream().getData())).show();
 
         return false;
     });
