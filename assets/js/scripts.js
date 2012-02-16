@@ -86,7 +86,18 @@
             load: function(e, file) {
                 fileList.append("<li><img src='"+e.target.result+"' /></li>");
                 
+
+
                 var originalimg = new Image();
+
+                if (App.timeline.length === 0){
+                    originalimg.onload = function(){
+                        App.initialWidth    = originalimg.width;
+                        App.initialHeight   = originalimg.height;
+                        $(window).trigger('firstimage');
+                    };
+                }
+
                 originalimg.src = e.target.result;
                 App.timeline.push(originalimg);
             },
@@ -151,8 +162,8 @@
             repeat: false, 
 
             // use dimensions from first image as default
-            height: App.timeline[0].height, 
-            width : App.timeline[0].width 
+            height: App.animHeight, 
+            width : App.animWidth 
         });
 
         $('#animresult').attr('src', mfAnimatedGIF.dataURL());
