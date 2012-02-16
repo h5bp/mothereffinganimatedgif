@@ -1,5 +1,44 @@
 (function(window, $){
     
+    var MFAnimatedGIF = function(images, delay, repeat, width, height) {
+        var encoder;
+
+        var _initialize = function(images, delay, repeat, width, height) {
+            var canvas = document.createElement("canvas");
+            var context = canvas.getContext('2d');
+
+            encoder = new GIFEncoder();
+            encoder.setRepeat(repeat);
+            encoder.setDelay(delay);
+            canvas.width = width;
+            canvas.height = height;
+            encoder.setSize(width, height);
+
+            encoder.start();
+
+            for(var i=0; i<images.length; i++) {
+                var animframe = images[i];
+                var ctx = canvas.getContext('2d');
+
+                ctx.drawImage(animframe, 0, 0, animframe.width, animframe.height, 0, 0, canvas.width, canvas.height);
+                
+                encoder.addFrame(ctx);    
+            }
+
+            encoder.finish();
+        };
+
+        var _dataURL = function() {
+            return 'data:image/gif;base64,' + $.base64.encode(encoder.stream().getData());
+        };
+
+        _initialize(images, delay, repeat, width, height);
+
+        return {
+            dataURL: _dataURL
+        };
+    }
+
     var App = {};
     App.MAX_BYTES = 2097152; // 2MB
     App.timeline = [];
@@ -50,26 +89,9 @@
     });
 
     $('.play').on('click', function(e) {
-        var canvas = document.createElement("canvas");
-        var context = canvas.getContext('2d');
+        var mfAnimatedGIF = new MFAnimatedGIF(App.timeline, 300, false, 75, 75);
 
-        var encoder = new GIFEncoder();
-        encoder.setRepeat(0);
-        encoder.setDelay(300);
-        canvas.width = 75;
-        canvas.height = 75;
-        encoder.setSize(75,75);
-
-        encoder.start();
-
-        for(var animframe in App.timeline) {
-            context.drawImage(animframe, 0, 0, animframe.width, animframe.height, 0, 0, canvas.width, canvas.height);
-            
-            encoder.addFrame(context);    
-        }
-
-        encoder.finish();
-        $('#animresult').attr('src', 'data:image/gif;base64,'+$.base64.encode(encoder.stream().getData()));
+        $('#animresult').attr('src', mfAnimatedGIF.dataURL());
 
         return false;
     });
