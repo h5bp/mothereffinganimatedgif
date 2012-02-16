@@ -28,6 +28,7 @@
                     App.timeline.push(originalimg);
                 },
                 groupstart: function(group) {
+                    $("body").addClass("hasfiles");
                 },
                 groupend: function(group) {
                 }
