@@ -31,7 +31,7 @@
         <div id="main" role="main">
         	<div class="top">
 	        	<div class="files">
-		        	<ul class="clearfix">
+		        	<ul id="inimglist" class="clearfix">
 		        		<li><img src="assets/img/temp.png" alt="">
 		        		<li><img src="assets/img/temp.png" alt="">
 		        		<li><img src="assets/img/temp.png" alt="">
@@ -53,9 +53,11 @@
 	        </div>
         </div>
         
-        <div id="drop">
+        <div id="dropArea">
         	<h2>Drag and Drop files here</h2>
         </div>
+
+        <img id="animresult"/>
          
         <footer id="footer" role="contentinfo">
 
@@ -65,9 +67,10 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="assets/js/libraries/jquery-1.7.1.min.js">\x3C/script>')</script>
+    <script src="assets/js/libraries/jquery.base64.min.js"></script>
     <script src="assets/js/libraries/LZWEncoder.js"></script>
-	<script src="assets/js/libraries/NeuQuant.js"></script>
-	<script src="assets/js/libraries/GIFEncoder.js"></script>
+	  <script src="assets/js/libraries/NeuQuant.js"></script>
+	  <script src="assets/js/libraries/GIFEncoder.js"></script>
     <script src="assets/js/scripts.js"></script>
 
 </body>
