@@ -1,8 +1,8 @@
-
 (function(window, $){
     
     var App = {};
     App.MAX_BYTES = 102400; // 100 KB
+    App.timeline = [];
 
     $('#dropArea').on('dragenter', function(e){
         e.preventDefault();
@@ -14,10 +14,8 @@
         e.preventDefault();
         var data = e.dataTransfer,
             files = data.files,
-            file = {}, 
             reader = {};
-        for(var i = 0; i < files.length; i++){
-            file = files[i];
+        for(var file in files){
             // file.fileName
             reader = new FileReader();
             reader.onloadend = function(e){
