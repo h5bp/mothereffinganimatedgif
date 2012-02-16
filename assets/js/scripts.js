@@ -52,13 +52,10 @@
 
         encoder.start();
 
-        for(var i=0; i<App.timeline.length; i++) {
-            var animframe = App.timeline[i];
-            var ctx = canvas.getContext('2d');
-
-            ctx.drawImage(animframe, 0, 0, animframe.width, animframe.height, 0, 0, canvas.width, canvas.height);
+        for(var animframe in App.timeline) {
+            context.drawImage(animframe, 0, 0, animframe.width, animframe.height, 0, 0, canvas.width, canvas.height);
             
-            encoder.addFrame(ctx);    
+            encoder.addFrame(context);    
         }
 
         encoder.finish();
