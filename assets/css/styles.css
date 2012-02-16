@@ -127,33 +127,15 @@
 		position: relative;
 		overflow: hidden;
 		padding: 20px;
-		height: 150px; }
+		height: 170px; }
 
 			#main .top .files ul 
 		{	margin: 0;
 			padding: 0;
 			display: block;
 			position: absolute;
-			width: 9999px; }
-
-				#main .top .files ul li
-			{	list-style: none;
-				display: block;
-				float: left;
-				width: 120px;
-				height: 80px;
-				overflow: hidden;
-				border-radius: 2px;
-				border: 1px solid rgba(255,255,255,0.5);
-				margin: 0 10px 0 0;
-				position: relative; }
-
-					#main .files ul li img 
-				{	width: auto;
-					height: 100%;
-					position: absolute;
-					top: 0;
-					left: 0; }
+			width: 9999px;
+			list-style: none; }
 
 		#main .top .controls
 	{	display: block;
@@ -201,6 +183,35 @@
 		text-align: center;
 		text-shadow: 0 -2px 0 rgba(255,255,255,0.25), -2px 0 0 rgba(255,255,255,0.15), 2px 0 0 rgba(255,255,255,0.15);
 		font-size: 42px; }
+
+	.film-strip-item {
+		float: left;
+		display: block;
+		overflow: hidden;
+		width: 100px;
+		height: 100px;
+		margin-right: 20px;
+		border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.5);
+		background-color: #000;
+	}
+
+	.film-strip-img {
+		display: block;
+	}
+
+	.film-strip-img.portrait {
+		width: 75px;
+		height: 100px;
+		margin: 0 auto;
+	}
+
+	.film-strip-img.landscape {
+		width: 100px;
+		height: 75px;
+		margin-top: 12px;
+	}
+
 
 /*************************************************************/
 /* 	Helpers
