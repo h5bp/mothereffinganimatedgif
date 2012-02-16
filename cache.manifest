@@ -8,9 +8,9 @@ CACHE MANIFEST
 # Charles - Web Debugging Proxy App
 # http://charlesproxy.com
 
-#CACHE - explicit entries
-#NETWORK - URL online whitelist entries
-#FALLBACK - ish entries (i.e. "In case shit happens")
+#CACHE explicit entries
+#NETWORK URL online whitelist entries
+#FALLBACK ish entries (i.e. "In case shit happens")
 
 
 CACHE:
