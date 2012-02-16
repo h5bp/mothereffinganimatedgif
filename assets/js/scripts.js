@@ -162,7 +162,7 @@
 
                 var origin = e.origin || e.domain || e.uri;
                 if(origin !== "http://saveasbro.com") return;
-                a.href = "http://saveasbro.com/download/" + e.data;
+                a.href = "http://saveasbro.com/gif/" + e.data;
                 a.style.display = "inline-block";
             };
 
