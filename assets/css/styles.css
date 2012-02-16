@@ -203,8 +203,13 @@
 		font-size: 42px; }
         
         
-    body.drag #drop h2{
+    body.drag #dropArea h2{
         color: #393;
+    }
+    
+    #inimglist li.error, #inimglist li.skip{
+        color: red;
+        text-align: center;
     }
 
 /*************************************************************/
