@@ -56,49 +56,46 @@
     var App = {};
     App.MAX_BYTES = 2097152; // 2MB
     App.timeline = [];
-
-    $(function() {
+    var fileList = $("#inimglist");
+    var body = $("body");
         
-        var body = $("body");
-        
-        // Bail out if the browser doesn't support required features
-        if (!FileReaderJS.enabled) {
-            body.addClass("disabled");
-            return;
-        }
-        
-        var fileList = $("#inimglist");
-        var opts = {
-            accept: 'image/*',
-            on: {
-                beforestart: function(file) {
-                    if (file.size > App.MAX_BYTES) {
-                        return false;
-                    }
-                },
-                error: function(file) {
-                    fileList.append("<li class='error'>Error</li>");
-                },
-                skip: function(file) {
-                    fileList.append("<li class='skip'>Skip</li>");
-                },
-                load: function(e, file) {
-                    fileList.append("<li><img src='"+e.target.result+"' /></li>");
-                    
-                    var originalimg = new Image();
-                    originalimg.src = e.target.result;
-                    App.timeline.push(originalimg);
-                },
-                groupstart: function(group) {
-                    $("body").addClass("hasfiles");
-                },
-                groupend: function(group) {
+    // Bail out if the browser doesn't support required features
+    if (!FileReaderJS.enabled) {
+        body.addClass("disabled");
+        return;
+    }
+    
+    var opts = {
+        accept: 'image/*',
+        on: {
+            beforestart: function(file) {
+                if (file.size > App.MAX_BYTES) {
+                    return false;
                 }
+            },
+            error: function(file) {
+                fileList.append("<li class='error'>Error</li>");
+            },
+            skip: function(file) {
+                fileList.append("<li class='skip'>Skip</li>");
+            },
+            load: function(e, file) {
+                fileList.append("<li><img src='"+e.target.result+"' /></li>");
+                
+                var originalimg = new Image();
+                originalimg.src = e.target.result;
+                App.timeline.push(originalimg);
+            },
+            groupstart: function(group) {
+                $("body").addClass("hasfiles");
+            },
+            groupend: function(group) {
             }
-        };
+        }
+    };
 
-        FileReaderJS.setupDrop(document.body, opts);
-        FileReaderJS.setupClipboard(document.body, opts);
+    FileReaderJS.setupDrop(document.body, opts);
+    FileReaderJS.setupClipboard(document.body, opts);
 
         Modernizr.addTest({
             // BlobBuilder
@@ -128,10 +125,12 @@
             document.body.appendChild(iframe);
         }
     });
+
     
     var finalImage = $("#animresult");
     $(".clear").on('click', function() {
         finalImage.attr("src", "void(0)").hide();
+        fileList.empty();
         App.timeline = [];
         return false;
     });
