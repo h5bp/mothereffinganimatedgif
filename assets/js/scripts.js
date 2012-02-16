@@ -124,7 +124,7 @@
             iframe.id = "saveasbro";
             document.body.appendChild(iframe);
         }
-    });
+
 
     
     var finalImage = $("#animresult");
@@ -178,6 +178,6 @@
         }
 
         return false;
-    });
+    }); // eo $('.play').on('click', function(e) {
 
-})(window, jQuery);
+})(window, jQuery); // eo IIFE
