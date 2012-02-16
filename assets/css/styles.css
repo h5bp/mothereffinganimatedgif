@@ -189,10 +189,10 @@
 			#main .top .controls a.clear 
 		{	float: right; }
 	
-	#drop 
+	#dropArea
 {	}
 
-		#drop h2
+		#dropArea h2
 	{	color: #333;
 		font-family: sans-serif;
 		font-weight: bold;
