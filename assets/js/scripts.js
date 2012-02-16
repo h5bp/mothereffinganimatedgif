@@ -1,14 +1,26 @@
 (function(window, $){
     
     var App = {};
-    App.MAX_BYTES = 102400; // 100 KB
+    App.MAX_BYTES = 2097152; // 2MB
     App.timeline = [];
 
     $(function() {
-        var fileList = $(".files ul").empty();
+        var fileList = $("#inimglist");
         var opts = {
+            accept: 'image/*',
             on: {
-                loadend: function(e, file) {
+                beforestart: function(file) {
+                    if (file.size > App.MAX_BYTES) {
+                        return false;
+                    }
+                },
+                error: function(file) {
+                    fileList.append("<li class='error'>Error</li>");
+                },
+                skip: function(file) {
+                    fileList.append("<li class='skip'>Skip</li>");
+                },
+                load: function(e, file) {
                     fileList.append("<li><img src='"+e.target.result+"' /></li>");
                     
                     var originalimg = new Image();
