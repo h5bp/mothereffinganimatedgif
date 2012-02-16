@@ -111,7 +111,8 @@
     background-image: -o-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
     background-image: linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
 	margin: 0;
-	padding: 20px; }
+	padding: 20px;
+	height: 140px; }
 
 	#main .files ul 
 {	margin: 0;
@@ -122,20 +123,19 @@
 	display: block;
 	float: left;
 	width: 120px;
-	height: 120px;
+	height: 80px;
 	overflow: hidden;
 	border-radius: 2px;
+	border: 1px solid rgba(255,255,255,0.5);
 	margin: 0 10px 0 0;
 	position: relative; }
 
 	#main .files ul li img 
-{	border-radius: 2px;
-	width: auto;
-	height: 80px;
+{	width: auto;
+	height: 100%;
 	position: absolute;
 	top: 0;
-	left: 0;
-	border: 1px solid rgba(255,255,255,0.5); }
+	left: 0; }
 
 	#main .files .controls
 {	display: block;
