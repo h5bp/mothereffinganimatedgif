@@ -220,7 +220,8 @@ body.disabled .nosupport{
 		font-family: sans-serif;
 		font-weight: bold;
 		letter-spacing: -1px;
-		margin: 15% 0 0 0;
+		margin: 0;
+		margin-top: 60px;
 		text-align: center;
 		text-shadow: 0 -2px 0 rgba(255,255,255,0.25), -2px 0 0 rgba(255,255,255,0.15), 2px 0 0 rgba(255,255,255,0.15);
 		font-size: 42px; 
