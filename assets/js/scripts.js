@@ -65,7 +65,6 @@
     // blobbuilder and a[download] are not required, as there is a fallback
     if (!FileReaderJS.enabled || !Modernizr.draganddrop) {
         body.addClass("disabled");
-        return;
     }
     
     // drag and drop setup.
