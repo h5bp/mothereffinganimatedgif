@@ -13,7 +13,7 @@ var qualitySlider = function(){
 
 	var change = function(){
 		App.quality = slider.val();
-		output.text(App.quality);
+                output.html(App.quality + '<span>goodnesses</span>');
 	}
 
 	init();
@@ -34,7 +34,7 @@ var sizeSlider = function(){
 	var change = function(){
 		var resolvedWidth = Math.floor(slider.val()/100 * App.initialWidth);
 
-		output.text(resolvedWidth);
+                output.html(resolvedWidth + '<span>px</span>');
 
 		App.animWidth  = resolvedWidth;
 		App.animHeight = Math.floor(resolvedWidth * App.initialHeight / App.initialWidth);
@@ -59,7 +59,7 @@ var rateSlider = function(){
 
 	var change = function(){
 		var rate = Math.floor(slider.val()/100 * max);
-		output.text(rate);
+                output.html(rate + '<span>ms</span>');
 		App.rate = rate;
 	};
 

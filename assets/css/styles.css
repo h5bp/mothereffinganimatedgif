@@ -439,6 +439,10 @@ header .social li {
     float: left;
     margin: 8px 0 0 10px;
 }
+#main .top .controls output span {
+    font-size: 80%;
+    color: hsl(0, 0%, 43%);
+}
 
 /*************************************************************/
 /*  Drop Area
