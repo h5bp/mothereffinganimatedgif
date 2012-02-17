@@ -340,6 +340,8 @@ header .social li {
     overflow: hidden;
     padding-top: 20px;
     min-height: 150px;
+    max-height: 250px;
+    overflow-y: auto;
 }
 #main .top .files ul {
     margin: 0;
