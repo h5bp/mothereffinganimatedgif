@@ -545,6 +545,7 @@ header .social li {
 
 body.hasfiles #dropArea h2 { display: none }
 body.hasfiles .onlyfiles { display:block;}
+body.hasfiles .onlyfiles #downloadlink{display: none;}
 body.drag #dropArea h2 em { color: #02457e; }
 body.drag #dropArea h2 span { border-color: #4a4; }
 #inimglist li.error,
