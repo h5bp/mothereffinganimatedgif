@@ -35,9 +35,9 @@
             encoder.start();
 
             for(var i=0; i<opts.images.length; i++) {
-                var animframe = opts.images[i];
-                var ctx = canvas.getContext('2d');
+                var animframe = (opts.rotations[i] === 0) ? opts.images[i] : _rotate(opts.images[i], opts.rotations[i]);
 
+                var ctx = canvas.getContext('2d');
                 ctx.drawImage(animframe, 0, 0, animframe.width, animframe.height, 0, 0, canvas.width, canvas.height);
                 
                 encoder.addFrame(ctx);    
@@ -132,7 +132,7 @@
                 fileList.append("<div class='col skip'>Skip<div class='fil3l'></div></div>");
             },
             load: function(e, file) {
-                fileList.append("<div class='col'><img src='"+e.target.result+"' /><div class='fil3l'></div></div>");
+                fileList.append("<div class='col'><img class='rotateimg' data-rotation='0' src='"+e.target.result+"' /><div class='fil3l'></div></div>");
 
                 var originalimg = new Image();
 
@@ -158,10 +158,17 @@
             }
         }
     };
+
     // the library handles most of the dnd bits.
     FileReaderJS.setupDrop(document.body, opts);
     FileReaderJS.setupClipboard(document.body, opts);
 
+    $(document).on('click', '.rotateimg', function(e) {
+        var currentRotation = parseInt($(e.currentTarget).attr('data-rotation')) + 90;
+        if(currentRotation >= 360) currentRotation = 0;
+        $(e.currentTarget).rotate(currentRotation);
+        $(e.currentTarget).attr('data-rotation', currentRotation);
+    });
 
     // test to see if we can do cool download or fallback style.
         Modernizr.addTest({
@@ -213,8 +220,14 @@
             return;
         }
         
+        var rotations = [];
+        $('.rotateimg').each(function(j, el) {
+            rotations.push($(el).data('rotation'));
+        });
+
         var mfAnimatedGIF = new MFAnimatedGIF({
             images: App.timeline,
+            rotations: rotations,
             delay : App.rate, 
             quality : App.quality, 
             repeat: 0,
@@ -224,7 +237,7 @@
             width : App.animWidth  || App.timeline[0].width
         });
 
-        $('#animresult').attr('src', mfAnimatedGIF.dataURL()).show();
+        $('#animresult').attr('src', mfAnimatedGIF.dataURL());
 
         //
         // Create the download link
