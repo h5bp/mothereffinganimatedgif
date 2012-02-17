@@ -273,6 +273,8 @@ header p {
 }
 header .social {
     float: right;
+    margin: 18px 0 0 0;
+    padding: 0;
 }
 header .social li {
     list-style: none;
@@ -397,41 +399,20 @@ body.drag #dropArea h2 span { border-color: #4a4 }
     padding: 10px;
 }
 footer {
-    background: #02457e;
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    padding-top: 3em;
-}
-footer ul {
-    list-style-type: none;
-    padding: 0;
-}
-footer ul li { 
-	display: inline; 
-	padding: 0 2% 0 0;
-}
-footer ul,
-footer p,
-footer div { 
-	padding: 0 20px 
+    height: 40px;
+    background: #02457e;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.5);
+    border-top: 1px solid #000;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
 }
 footer #html5-badge {
     position: absolute;
-    top: -30px;
-}
-footer a, 
-footer a:visited { 
-	color: cyan; 
-	text-decoration: none;
-}
-footer a:hover {
-	color: #FFF;
-	text-decoration: none;
-}
-footer p { 
-	color: #FFF 
+    top: -32px;
+    left: 20px;
 }
 
 /*************************************************************/
