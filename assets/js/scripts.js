@@ -111,13 +111,13 @@
                 }
             },
             error: function(file) {
-                fileList.append("<div class='col error'>Error</div>");
+                fileList.append("<div class='col error'>Error<div class='fil3l'></div></div>");
             },
             skip: function(file) {
-                fileList.append("<div class='col skip'>Skip</div>");
+                fileList.append("<div class='col skip'>Skip<div class='fil3l'></div></div>");
             },
             load: function(e, file) {
-                fileList.append("<div class='col'><img src='"+e.target.result+"' /></div>");
+                fileList.append("<div class='col'><img src='"+e.target.result+"' /><div class='fil3l'></div></div>");
 
                 var originalimg = new Image();
 
