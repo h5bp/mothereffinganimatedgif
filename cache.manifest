@@ -31,6 +31,7 @@ assets/css/styles.css
 #
 # Img
 assets/img/logo.gif
+assets/img/bg.png
 assets/img/bg-linen.jpg
 assets/img/garbage.png
 assets/img/arrow.png
@@ -76,19 +77,18 @@ NETWORK:
 # jQuery CDN
 http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 #
-# Analytics
+# Google Analytics
 http://www.google-analytics.com/ga.js
 #
 # mothereffinganimatedgif
 https://api.github.com/repos/h5bp/mothereffinganimatedgif?callback=callback
 #
-# Github API
+# Github API calls
 https://api.github.com/repos/paulirish/lazyweb-requests?callback=callback
-# this call below keeps poppping up on my end through 
-# charles for windows 7 and mac 10.7.2
+# github icons topright are making this call
 https://api.github.com:443
-# this call comes up through charles as of 02/17/2012
-# but there is nothing at this address - blank screen
+#
+# post-messaged data returns back anim gif
 http://saveasbro.com/gif
 
 FALLBACK:
