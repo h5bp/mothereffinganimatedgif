@@ -354,7 +354,9 @@ header em {
     border: solid 10px transparent;
 }
 #dropArea h2 em { font-style: normal }
+.onlyfiles { display:none; }
 body.hasfiles #dropArea h2 { display: none }
+body.hasfiles .onlyfiles { display:block;}
 body.drag #dropArea h2 em { color: #393 }
 body.drag #dropArea h2 span { border-color: #4a4 }
 #inimglist li.error,

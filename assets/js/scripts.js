@@ -85,8 +85,6 @@
             },
             load: function(e, file) {
                 fileList.append("<li><img src='"+e.target.result+"' /></li>");
-                
-
 
                 var originalimg = new Image();
 
@@ -104,7 +102,7 @@
                 App.timeline.push(originalimg);
             },
             groupstart: function(group) {
-                $("body").addClass("hasfiles");
+                body.addClass("hasfiles");
             },
             groupend: function(group) {
                 // TOOOOOO SLOW
