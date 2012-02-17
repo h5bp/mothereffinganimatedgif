@@ -214,7 +214,7 @@ body.disabled .nosupport { display: block }
 
 .top {
     position: relative;
-    xtop: -300px;
+    top: -300px;
     -webkit-transition: top linear .1s;
     -moz-transition: top linear .1s;
     -ms-transition: top linear .1s;
