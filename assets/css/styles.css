@@ -41,7 +41,7 @@ button,
 input,
 select,
 textarea {
-    font-family: sans-serif;
+    font-family: Lucida Grande, Lucida Sans, sans-serif;
     color: #222;
 }
 ::-moz-selection {
