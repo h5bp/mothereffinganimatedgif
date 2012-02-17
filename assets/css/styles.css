@@ -370,6 +370,7 @@ header .social li {
     position:absolute;
     bottom: -20px;
     right: 10px;
+    z-index: 400;
 }
 
 #main .top .files .col.over {
