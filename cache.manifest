@@ -6,7 +6,7 @@ CACHE MANIFEST
 # https://github.com/paulirish/lazyweb-requests/issues/53
 #
 # Version Control
-# v1.1.1 02-17-2012
+# v1.1.2 02-17-2012
 #
 # Handy Dandy Developer Tools
 # CHROME chrome://appcache-internals 
@@ -36,11 +36,11 @@ assets/img/bg-linen.jpg
 assets/img/garbage.png
 assets/img/arrow.png
 assets/img/icons.png
-http://markdotto.github.com/github-buttons/github-icons.png
 http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png
 assets/img/project_approved.png
 #
 # Github Buttons
+http://markdotto.github.com/github-buttons/github-icons.png
 http://markdotto.github.com/github-buttons/github-btn.html?user=h5bp&repo=mothereffinganimatedgif&type=fork&count=true
 http://markdotto.github.com/github-buttons/github-btn.html?user=paulirish&repo=lazyweb-requests&type=watch&count=true
 #
@@ -80,15 +80,17 @@ http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 # Google Analytics
 http://www.google-analytics.com/ga.js
 #
-# mothereffinganimatedgif
+# Github 
+# API calls
+https://api.github.com/repos/paulirish/lazyweb-requests?callback=callback
+# MEAG.gif
 https://api.github.com/repos/h5bp/mothereffinganimatedgif?callback=callback
 #
-# Github API calls
-https://api.github.com/repos/paulirish/lazyweb-requests?callback=callback
-# github icons topright are making this call
+# github icons topright make this call
 https://api.github.com:443
 #
-# post-messaged data returns back anim gif
+# post-messaged data always returns back anim gif
 http://saveasbro.com/gif
+
 
 FALLBACK:
