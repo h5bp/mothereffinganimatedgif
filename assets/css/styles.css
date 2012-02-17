@@ -408,6 +408,9 @@ header .social li {
     font-family: sans-serif;
     text-shadow: 0 1px 0 rgba(0,0,0,0.5);
 }
+#main .top .controls a:hover {
+    color: #fff;
+}
 #main .top .controls a.play { 
     margin: 0 0 0 20px;
 }
@@ -471,7 +474,30 @@ header .social li {
     line-height: 42px;
 }
 #dropArea h2 em { font-style: normal }
-.onlyfiles { display:none; }
+
+.onlyfiles { 
+    display:none; 
+}
+
+.onlyfiles .play,
+.onlyfiles .clear,
+.onlyfiles #downloadlink {
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #fff;
+    padding: 4px 12px;
+    border: 1px solid rgba(0,0,0,0.5);
+    text-decoration: none;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.8);
+    background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image: -ms-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image: -o-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image: linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+}
+
 body.hasfiles #dropArea h2 { display: none }
 body.hasfiles .onlyfiles { display:block;}
 body.drag #dropArea h2 em { color: #02457e; }
