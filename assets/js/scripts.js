@@ -114,6 +114,7 @@
             groupend: function(group) {
                 // TOOOOOO SLOW
                 //buildGif();
+                setupDrag();
             }
         }
     };
@@ -164,10 +165,8 @@
     $('.play').on('click', function(e) {
         buildGif();
         return false;
-    }); // eo $('.play').on('click', function(e) {
+    });
 
-
-    
     function buildGif() {
 
         if (!App.timeline.length) {

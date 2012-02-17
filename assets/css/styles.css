@@ -276,34 +276,30 @@ header em {
     margin: 0;
     position: relative;
     overflow: hidden;
-    padding: 20px;
-    height: 150px;
+    padding-top: 20px;
+    min-height: 150px;
 }
 #main .top .files ul {
     margin: 0;
     padding: 0;
-    display: block;
-    position: absolute;
-    width: 9999px;
 }
 #main .top .files ul li {
     list-style: none;
     display: block;
     float: left;
-    width: 120px;
+    width: 80px;
     height: 80px;
+    line-height: 80px;
     overflow: hidden;
     border-radius: 2px;
     border: 1px solid rgba(255,255,255,0.5);
     margin: 0 10px 0 0;
     position: relative;
+    text-align: center;
 }
 #main .files ul li img {
-    width: auto;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    max-width: 60px;
+    max-height: 60px;
 }
 #main .top .controls {
     display: block;
