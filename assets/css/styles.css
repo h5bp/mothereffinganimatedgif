@@ -372,20 +372,36 @@ footer {
     width: 100%;
     padding-top: 3em;
 }
-footer a { color: cyan }
-footer p { color: #FFF }
 footer ul {
     list-style-type: none;
     padding: 0;
 }
-footer ul li { display: inline }
+footer ul li { 
+	display: inline; 
+	padding: 0 2% 0 0;
+}
 footer ul,
 footer p,
-footer div { padding: 0 20px }
+footer div { 
+	padding: 0 20px 
+}
 footer #html5-badge {
     position: absolute;
     top: -30px;
 }
+footer a, 
+footer a:visited { 
+	color: cyan; 
+	text-decoration: none;
+}
+footer a:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+footer p { 
+	color: #FFF 
+}
+
 /*************************************************************/
 /*     Helpers
 /*************************************************************/
