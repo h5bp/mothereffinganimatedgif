@@ -38,9 +38,9 @@ assets/js/libraries/jQueryRotateCompressed.js
 # jQuery base64
 assets/js/libraries/jquery.base64.min.js
 # AppCache Status
-assets/js/libraries/cache.update.js
+assets/js/cache.update.js
 # Network Status
-assets/js/libraries/network.status.js
+assets/js/network.status.js
 # Modernizr
 assets/js/libraries/modernizr.js
 # LZWEncoder JS
@@ -62,8 +62,7 @@ assets/js/scripts.js
 NETWORK:
 # jQuery CDN
 http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-# Analytics
-https://www.google-analytics.com/ga.js
-
+# Analytics - still buggy
+# https://www.google-analytics.com/ga.js
 
 FALLBACK:
