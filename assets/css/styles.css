@@ -491,10 +491,11 @@ header .social li {
     font-size: 14px;
     font-weight: bold;
     text-shadow: 0 1px 0 rgba(255,255,255,0.35);
-    padding: 8px 20px;
+    padding: 8px 20px 8px 30px;
     border: 1px solid rgba(0,0,0,0.5);
     text-decoration: none;
     border-radius: 3px;
+    position: relative;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
     background: rgba(255, 255, 255, 0.8);
     background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
@@ -504,20 +505,43 @@ header .social li {
     background-image: linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
 }
 
+.onlyfiles .play:before,
+.onlyfiles .clear:before,
+.onlyfiles #downloadlink:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    display: block;
+    top: 6px;
+    left: 6px;
+    background: url(../img/icons.png) no-repeat 0 0;
+}
+
 .onlyfiles .play {
     color: #001f2e;
     background-color: #4388c9;
+}
+.onlyfiles .play:before {
+    background-position: 0 -1px;
 }
 
 .onlyfiles .clear {
     color: #361d00;
     background-color: #bf7329;
 }
+.onlyfiles .clear:before {
+    background-position: 0 -21px;
+}
 
 .onlyfiles #downloadlink {
     color: #243800;
     background-color: #81bf29;
 }
+.onlyfiles #downloadlink:before {
+    background-position: 0 -40px;
+}
+
 
 body.hasfiles #dropArea h2 { display: none }
 body.hasfiles .onlyfiles { display:block;}
