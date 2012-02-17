@@ -283,7 +283,7 @@ header em {
     margin: 0;
     padding: 0;
 }
-#main .top .files ul li {
+#main .top .files .col {
     list-style: none;
     display: block;
     float: left;
@@ -297,7 +297,15 @@ header em {
     position: relative;
     text-align: center;
 }
-#main .files ul li img {
+#main .top .files .col.over {
+    background: white;
+}
+#main .top .files .col.moving {
+    -webkit-transform: scale(0.8);
+    background: white;
+    opacity: .8;
+}
+#main .files .col img {
     max-width: 60px;
     max-height: 60px;
 }

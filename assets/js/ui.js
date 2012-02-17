@@ -96,78 +96,59 @@ var samples = samples || {};
 
 // http://www.html5rocks.com/en/tutorials/dnd/basics/#toc-examples
 function setupDrag() {
-  var id_ = 'inimglist';
-  var cols_ = document.querySelectorAll('#' + id_ + ' li');
+
+  var container = $("#inimglist");
   var dragSrcEl_ = null;
 
   var handleDragStart = function(e) {
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', this.innerHTML);
-
+    e.originalEvent.dataTransfer.effectAllowed = 'move';
+    e.originalEvent.dataTransfer.setData('text/html', this.innerHTML);
     dragSrcEl_ = this;
-
-    // this/e.target is the source node.
-    this.addClassName('moving');
+    $(this).addClass('moving');
   };
 
   var handleDragOver = function(e) {
-    if (e.preventDefault) {
-      e.preventDefault(); // Allows us to drop.
+    if (e.originalEvent.preventDefault) {
+      e.originalEvent.preventDefault(); // Allows us to drop.
     }
   
-    e.dataTransfer.dropEffect = 'move';
+    e.originalEvent.dataTransfer.dropEffect = 'move';
 
-    return false;
   };
 
   var handleDragEnter = function(e) {
-    this.addClassName('over');
+    $(this).addClass('over');
   };
 
   var handleDragLeave = function(e) {
     // this/e.target is previous target element.
-    this.removeClassName('over');
+    $(this).removeClass('over');
   };
 
   var handleDrop = function(e) {
-    // this/e.target is current target element.
-
-    if (e.stopPropagation) {
-      e.stopPropagation(); // stops the browser from redirecting.
-    }
-
-    // Don't do anything if we're dropping on the same column we're dragging.
-    if (dragSrcEl_ != this) {
-      dragSrcEl_.innerHTML = this.innerHTML;
-      this.innerHTML = e.dataTransfer.getData('text/html');
-
-      // Set number of times the column has been moved.
-      //var count = this.querySelector('.count');
-      //var newCount = parseInt(count.getAttribute('data-col-moves')) + 1;
-      //count.setAttribute('data-col-moves', newCount);
-      //count.textContent = 'moves: ' + newCount;
-    }
-
-    return false;
-  };
-
-  var handleDragEnd = function(e) {
-    // this/e.target is the source node.
-    [].forEach.call(cols_, function (col) {
-      col.removeClassName('over');
-      col.removeClassName('moving');
-    });
-  };
-
   
-  [].forEach.call(cols_, function (col) {
-    col.setAttribute('draggable', 'true');  // Enable columns to be draggable.
-    col.addEventListener('dragstart', handleDragStart, false);
-    col.addEventListener('dragenter', handleDragEnter, false);
-    col.addEventListener('dragover', handleDragOver, false);
-    col.addEventListener('dragleave', handleDragLeave, false);
-    col.addEventListener('drop', handleDrop, false);
-    col.addEventListener('dragend', handleDragEnd, false);
-  });
+    if (e.originalEvent.stopPropagation) {
+      e.originalEvent.stopPropagation(); // stops the browser from redirecting.
+    }
+    
+    if (dragSrcEl_ != this) {
+       dragSrcEl_.innerHTML = this.innerHTML;
+       this.innerHTML = e.originalEvent.dataTransfer.getData('text/html');
+       App.rebuildTimeline();
+       handleDragEnd();
+    }
+    
+  };
+
+  var handleDragEnd = function() {
+    container.find(".col").removeClass("over moving");
+  };
+  
+  container.on("dragstart", ".col", handleDragStart);
+  container.on("dragenter", ".col", handleDragEnter);
+  container.on("dragover", ".col", handleDragOver);
+  container.on("dragleave", ".col", handleDragLeave);
+  container.on("drop", ".col", handleDrop);
+  container.on("dragend", ".col", handleDragEnd);
 }
 
