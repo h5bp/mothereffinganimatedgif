@@ -392,9 +392,9 @@ header .social li {
 #main .top .controls a.play { margin: 0 0 0 20px }
 #main .top .controls a.clear { float: right }
 #dropArea { 
-    width: 600px;
+    width: 660px;
     padding: 40px 20px;
-    margin: 0 auto;
+    margin: 40px auto 0;
     position: relative;
     display: block;
     background: rgba(255, 255, 255, 0.8);
@@ -413,7 +413,8 @@ header .social li {
     font-family: sans-serif;
     font-weight: bold;
     margin: 0;
-    padding: 0;
+    padding: 10px 0 10px 60px;
+    background: url(../img/arrow.png) no-repeat -24px -30px;
     letter-spacing: -1px;
     text-shadow: 0 -2px 0 rgba(255,255,255,0.25), -2px 0 0 rgba(255,255,255,0.15), 2px 0 0 rgba(255,255,255,0.15);
     font-size: 42px;
@@ -423,8 +424,8 @@ header .social li {
 .onlyfiles { display:none; }
 body.hasfiles #dropArea h2 { display: none }
 body.hasfiles .onlyfiles { display:block;}
-body.drag #dropArea h2 em { color: #393 }
-body.drag #dropArea h2 span { border-color: #4a4 }
+body.drag #dropArea h2 em { color: #02457e; }
+body.drag #dropArea h2 span { border-color: #4a4; }
 #inimglist li.error,
 #inimglist li.skip {
     color: red;
