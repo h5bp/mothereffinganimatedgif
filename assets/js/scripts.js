@@ -78,6 +78,9 @@
                     document.querySelector && Modernizr.postmessage && window.JSON;
     if (!support) {
         body.addClass("disabled");
+        var caniscript = document.createElement('script');
+        caniscript.src = 'http://sandbox.thewikies.com/caniuse/json+filereader+draganddrop+querySelector+postmessage.html?callback=canicallback';
+        document.body.appendChild(caniscript);
     }
     
     // drag and drop setup.
@@ -229,3 +232,6 @@
 
     }
     
+function canicallback(data){
+    $('#dropArea').html(data.html);
+}
