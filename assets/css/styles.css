@@ -201,7 +201,7 @@ td { vertical-align: top }
 /*************************************************************/
 html { height: 100% }
 body {
-    background: #999;
+    background: #999 url(../img/bg-linen.jpg);
     min-height: 100%;
     height: 100%;
 }
