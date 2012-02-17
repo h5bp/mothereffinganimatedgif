@@ -255,6 +255,25 @@ body.disabled .nosupport{
         text-align: center;
         padding: 10px;
     }
+	
+	footer {
+	  background: #02457e; 
+	  position: absolute;
+	  left: 0;
+	  bottom: 0;
+	  width: 100%;
+      padding-top: 3em;
+	}
+	footer a { color: cyan; }
+	footer p { color: #FFF; }
+	footer ul{
+		list-style-type: none;
+		padding: 0;
+	}
+    footer ul li { display: inline; }
+	footer ul, footer p, footer div { padding: 0 20px; }
+
+    footer #html5-badge { position: absolute; top: -30px;}
 
 /*************************************************************/
 /* 	Helpers

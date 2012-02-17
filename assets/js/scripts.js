@@ -56,6 +56,7 @@
 
     var App = {};
     App.MAX_BYTES = 2*1024*1024; // 2MB
+    App.initialRate = 300; // 300ms delay in frames
     App.timeline = [];
 
     var fileList = $("#inimglist");
@@ -171,8 +172,8 @@
         }
         
         var mfAnimatedGIF = new MFAnimatedGIF({
-            images: App.timeline, 
-            delay : 10000, 
+            images: App.timeline,
+            delay : App.rate, 
             repeat: false, 
 
             // use dimensions from first image as default
