@@ -224,7 +224,7 @@
             width : App.animWidth  || App.timeline[0].width
         });
 
-        $('#animresult').attr('src', mfAnimatedGIF.dataURL());
+        $('#animresult').attr('src', mfAnimatedGIF.dataURL()).show();
 
         //
         // Create the download link
