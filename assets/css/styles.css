@@ -364,6 +364,7 @@ header .social li {
 #main .files .col:hover:before {
     content : "↻";
     font-size: 20px;
+    pointer-events:none;
     color: white;
     text-shadow: 1px 1px 2px #ccc;
     position:absolute;
