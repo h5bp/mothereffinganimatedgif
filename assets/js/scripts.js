@@ -31,8 +31,12 @@
             encoder.finish();
         };
 
+        var _rawDataURL = function() {
+            return $.base64.encode(encoder.stream().getData());
+        };
+
         var _dataURL = function() {
-            return 'data:image/gif;base64,' + $.base64.encode(encoder.stream().getData());
+            return 'data:image/gif;base64,' + _rawDataURL();
         };
 
         var _binaryURL = function() {
@@ -51,8 +55,9 @@
         _initialize(opts);
 
         return {
-            dataURL: _dataURL,
-            binaryURL: _binaryURL
+            dataURL   : _dataURL,
+            rawDataURL: _rawDataURL,
+            binaryURL : _binaryURL
         };
     };
     
@@ -166,7 +171,7 @@
         if(!Modernizr.download && $('#saveabro')) {
             var iframe = document.createElement("iframe");
 
-            iframe.src = "http://saveasbro.com/";
+            iframe.src = "http://saveasbro.com/gif/";
             iframe.setAttribute("style","position: absolute; visibility: hidden; left: -999em;");
             iframe.id = "saveasbro";
             document.body.appendChild(iframe);
@@ -212,13 +217,13 @@
         window.URL = window.webkitURL || window.URL;
         window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
 
-        var filename = "animated.gif";
+        var filename = "animated."+((+new Date()) + "").substr(8);
 
         var a = document.querySelector('#downloadlink');
         a.style.display = "none";
 
         if(Modernizr.download && Modernizr.bloburls && Modernizr.blobbuilder) {
-            a.download = filename;
+            a.download = filename + '.gif';
             a.href = mfAnimatedGIF.binaryURL(filename);
             a.style.display = "inline-block";
 
@@ -234,12 +239,12 @@
 
                 var origin = e.origin || e.domain || e.uri;
                 if(origin !== "http://saveasbro.com") return;
-                a.href = "http://saveasbro.com/gif/" + e.data;
+                a.href = e.data;
                 a.style.display = "inline-block";
             };
 
             var iframe = document.querySelector('#saveasbro');
-            iframe.contentWindow.postMessage(JSON.stringify({name:filename, data: mfAnimatedGIF.dataURL(), formdata: Modernizr.formdata}),"http://saveasbro.com");
+            iframe.contentWindow.postMessage(JSON.stringify({name:filename, data: mfAnimatedGIF.rawDataURL(), formdata: Modernizr.formdata}),"http://saveasbro.com/gif/");
         }
 
     }
