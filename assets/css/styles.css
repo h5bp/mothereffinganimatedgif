@@ -370,6 +370,14 @@ header .social li {
     max-height: 250px;
     overflow-y: auto;
 }
+#main .top .files:after{
+    content:"Add more images by dropping those into browser";
+    position: absolute;
+    right:10px;
+    bottom:5px;
+    color:white;
+    opacity:0.3;
+}
 #main .top .files ul {
     margin: 0;
     padding: 0;
