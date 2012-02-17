@@ -126,13 +126,23 @@ body.disabled .nosupport{
 
 		header p
 	{	display: block;
-		float: left;
+		float: right;
 		line-height: 12px;
 		font-size: 12px;
 		padding: 12px 0 12px 20px;
 		font-weight: 200;
 		letter-spacing: 0;
-		color: #efefef; }
+		color: #333;
+		text-shadow: none;
+		margin-right: 10px;
+}
+		
+		header em {
+		  background: #eef;
+		  border-radius: 5px;
+		  padding:5px;
+		  font-style: normal;
+		}
 
 
 	#main 
