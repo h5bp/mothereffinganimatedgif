@@ -221,6 +221,7 @@ body.disabled .nosupport { display: block }
 header {
     display: block;
     width: 100%;
+    min-height: 60px;
     background: #02457e;
     color: #fff;
     text-shadow: 0 2px 0 rgba(0,0,0,0.5);
@@ -233,15 +234,17 @@ header img {
     height: 24px;
     width: 24px;
     border: 2px solid #fff;
+    box-shadow: 0 1px 0 #000;
     margin: 18px 0 0 24px;
 }
 header h1 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Patua One', sans-serif;
     margin: 0;
     padding: 20px 0 0 20px;
-    font-weight: 600;
-    letter-spacing: -1px;
+    font-weight: 400;
+    text-shadow: 0 2px 0 #000, 2px 0 0 #000;
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-size: 18px;
     line-height: 18px;
     display: block;
@@ -249,21 +252,32 @@ header h1 {
 }
 header p {
     display: block;
-    float: right;
-    line-height: 12px;
-    font-size: 12px;
-    padding: 12px 0 12px 20px;
+    float: left;
+    line-height: 11px;
+    font-size: 11px;
+    padding: 6px 12px 5px;
     font-weight: 200;
     letter-spacing: 0;
-    color: #333;
-    text-shadow: none;
-    margin-right: 10px;
+    color: #fff;
+    margin: 16px 0 0 10px;
+    text-shadow: 0 2px 0 #000;
+    border-radius: 30px;
+    border-top: 1px solid rgba(255,255,255,0.35);
+    border-bottom: 1px solid rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.25);
+    background-image: -webkit-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image: -moz-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image: -ms-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image: -o-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image: linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
 }
-header em {
-    background: #eef;
-    border-radius: 5px;
-    padding: 5px;
-    font-style: normal;
+header .social {
+    float: right;
+}
+header .social li {
+    list-style: none;
+    display: block;
+    float: left;
 }
 #main { width: 100% }
 #main .top .files {
@@ -343,23 +357,33 @@ header em {
 }
 #main .top .controls a.play { margin: 0 0 0 20px }
 #main .top .controls a.clear { float: right }
-#dropArea { }
+#dropArea { 
+    width: 600px;
+    padding: 40px 20px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+    background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image: -ms-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image: -o-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image: linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    text-align: center; 
+    box-shadow: 0 1px 0 #fff, 0 -1px 0 rgba(0,0,0,0.1), 0 -2px 0 rgba(255,255,255,0.5);
+    text-shadow: 0 1px 0 white;
+    border-radius: 5px;
+}
 #dropArea h2 {
     color: #333;
     font-family: sans-serif;
     font-weight: bold;
-    letter-spacing: -1px;
     margin: 0;
-    margin-top: 60px;
-    text-align: center;
+    padding: 0;
+    letter-spacing: -1px;
     text-shadow: 0 -2px 0 rgba(255,255,255,0.25), -2px 0 0 rgba(255,255,255,0.15), 2px 0 0 rgba(255,255,255,0.15);
     font-size: 42px;
-}
-#dropArea h2 span {
-    background: rgba(255, 255, 255, .8);
-    border-radius: 5px;
-    padding: 40px;
-    border: solid 10px transparent;
+    line-height: 42px;
 }
 #dropArea h2 em { font-style: normal }
 .onlyfiles { display:none; }
