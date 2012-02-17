@@ -28,6 +28,9 @@ http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantic
 http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 assets/js/libraries/jquery-1.7.1.min.js
 
+#jQuery Rotate Compressed JS
+assets/js/libraries/jQueryRotateCompressed.js
+
 # Modernizr
 assets/js/libraries/modernizr.js
 
