@@ -58,6 +58,13 @@
     App.MAX_BYTES = 2*1024*1024; // 2MB
     App.initialRate = 300; // 300ms delay in frames
     App.timeline = [];
+    
+    App.clear = function() {
+        finalImage.attr("src", "about:blank").hide();
+        fileList.empty();
+        App.timeline = [];
+        body.removeClass("hasfiles");
+    };
 
     var fileList = $("#inimglist");
     var body = $("body");
@@ -148,9 +155,7 @@
     
     var finalImage = $("#animresult");
     $(".clear").on('click', function() {
-        finalImage.attr("src", "about:blank").hide();
-        fileList.empty();
-        App.timeline = [];
+        App.clear();
         return false;
     });
     
