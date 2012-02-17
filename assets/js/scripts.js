@@ -3,6 +3,22 @@
     var MFAnimatedGIF = function(opts) {
         var encoder;
 
+        var _rotate = function(image, rotation) {
+            var canvas = document.createElement("canvas");
+
+            canvas.width = image.width;
+            canvas.height = image.height;
+
+            var ctx = canvas.getContext('2d');
+            ctx.translate(image.width/2, image.height/2);
+            ctx.rotate(rotation * Math.PI / 180.0);
+            ctx.drawImage(image, -image.width/2, -image.height/2, image.width, image.height);
+            ctx.rotate(rotation * Math.PI / 180.0);
+            ctx.translate(-image.width/2, -image.height/2);
+
+            return canvas;
+        };
+
         var _initialize = function(opts) {
 
             var canvas = document.createElement("canvas");
@@ -11,10 +27,9 @@
             encoder = new GIFEncoder();
             encoder.setRepeat(opts.repeat);
             encoder.setDelay(opts.delay);
-            canvas.width =  opts.width;
+            canvas.width  = opts.width;
             canvas.height = opts.height;
             encoder.setSize(opts.width, opts.height);
-            console.log(opts.quality);
             encoder.setQuality(opts.quality);
 
             encoder.start();
