@@ -1,65 +1,69 @@
 CACHE MANIFEST
 # themothereffinganimatedgifmanifest
-# Created by the crew behind lwr53
+# http://mothereffinganimatedgif.com
+#
+# Contributors : LWR53 Crew
 # https://github.com/paulirish/lazyweb-requests/issues/53
 #
 # Version Control
 # v0.0.0 00-00-2012
-
+#
 # Handy Dandy Developer Tools
 # CHROME chrome://appcache-internals 
 # FIREFOX about:cache
 # Charles - Web Debugging Proxy App
 # http://charlesproxy.com
-
+#
 # CACHE explicit entries
 # NETWORK URL online whitelist entries
 # FALLBACK ish entries (i.e. "In case shit happens")
 
 
 CACHE:
-# Google Fonts
+# Fonts
 http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,800
-
-# css
+# Css
 assets/css/styles.css
-
-# img
+# Img
 assets/img/logo.gif
 http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png
-
-# jQuery
-http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
+assets/img/project_approved.png
+# Github Buttons
+http://markdotto.github.com/github-buttons/github-btn.html?user=h5bp&repo=mothereffinganimatedgif&type=fork&count=true
+http://markdotto.github.com/github-buttons/github-btn.html?user=paulirish&repo=lazyweb-requests&type=watch&count=true
+# jQuery Local
 assets/js/libraries/jquery-1.7.1.min.js
-
-# jQuery Rotate Compressed JS
+# jQuery Rotate Compressed
 assets/js/libraries/jQueryRotateCompressed.js
-
+# jQuery base64
+assets/js/libraries/jquery.base64.min.js
+# AppCache Status
+assets/js/libraries/cache.update.js
+# Network Status
+assets/js/libraries/network.status.js
 # Modernizr
 assets/js/libraries/modernizr.js
-
-# jQuery base64 JS
-assets/js/libraries/jquery.base64.min.js
-
 # LZWEncoder JS
 assets/js/libraries/LZWEncoder.js
-
 # NeuQuant JS
 assets/js/libraries/NeuQuant.js
-
 # GIFEncoder JS
 assets/js/libraries/GIFEncoder.js
-
 # File Reader JS
 assets/js/libraries/filereader.js
-
-# UI JS
+# H5 Slider
+assets/js/libraries/html5slider.js
+# UI
 assets/js/ui.js
-
-# Scripts JS
+# Scripts
 assets/js/scripts.js
 
+
 NETWORK:
+# jQuery CDN
+http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
+# Analytics
+https://www.google-analytics.com/ga.js
 
 
 FALLBACK:
