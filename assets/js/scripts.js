@@ -87,7 +87,9 @@
         
     // Bail out if the browser doesn't support required features
     // blobbuilder and a[download] are not required, as there is a fallback
-    if (!FileReaderJS.enabled || !Modernizr.draganddrop) {
+    var support = FileReaderJS.enabled && Modernizr.draganddrop && 
+                    document.querySelector && Modernizr.postmessage && window.JSON;
+    if (!support) {
         body.addClass("disabled");
     }
     

@@ -27,6 +27,9 @@ assets/img/logo.gif
 http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 assets/js/libraries/jquery-1.7.1.min.js
 
+# Modernizr
+assets/js/libraries/modernizr.js
+
 # jQuery base64 JS
 assets/js/libraries/jquery.base64.min.js
 
@@ -41,6 +44,9 @@ assets/js/libraries/GIFEncoder.js
 
 # File Reader JS
 assets/js/libraries/filereader.js
+
+# UI JS
+assets/js/ui.js
 
 # Scripts JS
 assets/js/scripts.js
