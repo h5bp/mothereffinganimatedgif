@@ -6,7 +6,7 @@ CACHE MANIFEST
 # https://github.com/paulirish/lazyweb-requests/issues/53
 #
 # Version Control
-# v1.0.9 02-17-2012
+# v1.1.0 02-17-2012
 #
 # Handy Dandy Developer Tools
 # CHROME chrome://appcache-internals 
@@ -22,6 +22,7 @@ CACHE MANIFEST
 CACHE:
 # Fonts
 http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,800|Alfa+Slab+One|Patua+One
+# these addresses below are being sneaky and diferent at times
 http://themes.googleusercontent.com/static/fonts/patuaone/v3/yAXhog6uK3bd3OwBILv_SLO3LdcAZYWl9Si6vvxL-qU.woff
 http://themes.googleusercontent.com/static/fonts/patuaone/v3/yAXhog6uK3bd3OwBILv_SD8E0i7KZn-EPnyo3HZu7kw.woff
 #
@@ -33,6 +34,7 @@ assets/img/logo.gif
 assets/img/bg-linen.jpg
 assets/img/garbage.png
 assets/img/arrow.png
+assets/img/icons.png
 http://markdotto.github.com/github-buttons/github-icons.png
 http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png
 assets/img/project_approved.png
