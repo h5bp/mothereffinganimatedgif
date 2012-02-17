@@ -14,6 +14,8 @@
             canvas.width =  opts.width;
             canvas.height = opts.height;
             encoder.setSize(opts.width, opts.height);
+            console.log(opts.quality);
+            encoder.setQuality(opts.quality);
 
             encoder.start();
 
@@ -57,6 +59,7 @@
     var App = {};
     App.MAX_BYTES = 2*1024*1024; // 2MB
     App.initialRate = 300; // 300ms delay in frames
+    App.initialQuality = 10; // 10 is supposed to give a good balance
     App.timeline = [];
     
     App.clear = function() {
@@ -177,7 +180,8 @@
         var mfAnimatedGIF = new MFAnimatedGIF({
             images: App.timeline,
             delay : App.rate, 
-            repeat: false, 
+            quality : App.quality, 
+            repeat: 0,
 
             // use dimensions from first image as default
             height: App.animHeight || App.timeline[0].height,

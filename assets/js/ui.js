@@ -1,3 +1,24 @@
+var qualitySlider = function(){
+
+	var elem, slider, output;
+
+	var init = function(){
+		elem = $('.quality').show();
+		slider = elem.find('input');
+		output = elem.find('output');
+		slider.change(change);
+		App.quality = App.initialQuality;
+		change();
+	};
+
+	var change = function(){
+		App.quality = slider.val();
+		output.text(App.quality);
+	}
+
+	init();
+};
+
 var sizeSlider = function(){
 
 	var elem, slider, output;
@@ -48,5 +69,6 @@ var rateSlider = function(){
 $(window).bind('firstimage', function(){
 	new sizeSlider();
 	new rateSlider();
+	new qualitySlider();
 });
 
