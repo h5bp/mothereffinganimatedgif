@@ -6,7 +6,7 @@ CACHE MANIFEST
 # https://github.com/paulirish/lazyweb-requests/issues/53
 #
 # Version Control
-# v1.0.6 02-17-2012
+# v1.0.9 02-17-2012
 #
 # Handy Dandy Developer Tools
 # CHROME chrome://appcache-internals 
@@ -23,6 +23,7 @@ CACHE:
 # Fonts
 http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,800|Alfa+Slab+One|Patua+One
 http://themes.googleusercontent.com/static/fonts/patuaone/v3/yAXhog6uK3bd3OwBILv_SLO3LdcAZYWl9Si6vvxL-qU.woff
+http://themes.googleusercontent.com/static/fonts/patuaone/v3/yAXhog6uK3bd3OwBILv_SD8E0i7KZn-EPnyo3HZu7kw.woff
 #
 # Css
 assets/css/styles.css
@@ -35,6 +36,10 @@ assets/img/arrow.png
 http://markdotto.github.com/github-buttons/github-icons.png
 http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png
 assets/img/project_approved.png
+#
+# this call comes up through charles as of 02/17/2012
+# but there is nothing at this address - blank screen
+http://saveasbro.com/gif
 #
 # Github Buttons
 http://markdotto.github.com/github-buttons/github-btn.html?user=h5bp&repo=mothereffinganimatedgif&type=fork&count=true
@@ -73,13 +78,17 @@ NETWORK:
 # jQuery CDN
 http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 #
-# Analytics - still buggy
-# https://www.google-analytics.com/ga.js
+# Analytics
+http://www.google-analytics.com/ga.js
 #
-# mothereffinganimatedgif - still buggy
+# mothereffinganimatedgif
 https://api.github.com/repos/h5bp/mothereffinganimatedgif?callback=callback
 #
-# Github API - still buggy
+# Github API
 https://api.github.com/repos/paulirish/lazyweb-requests?callback=callback
+# this call below keeps poppping up on my end through 
+# charles for windows 7 and mac 10.7.2
+https://api.github.com:443
+
 
 FALLBACK:
