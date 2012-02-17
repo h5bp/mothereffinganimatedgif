@@ -281,34 +281,38 @@ header p {
     margin: 0;
     position: relative;
     overflow: hidden;
-    padding: 20px;
-    height: 150px;
+    padding-top: 20px;
+    min-height: 150px;
 }
 #main .top .files ul {
     margin: 0;
     padding: 0;
-    display: block;
-    position: absolute;
-    width: 9999px;
 }
-#main .top .files ul li {
+#main .top .files .col {
     list-style: none;
     display: block;
     float: left;
-    width: 120px;
+    width: 80px;
     height: 80px;
+    line-height: 80px;
     overflow: hidden;
     border-radius: 2px;
     border: 1px solid rgba(255,255,255,0.5);
     margin: 0 10px 0 0;
     position: relative;
+    text-align: center;
 }
-#main .files ul li img {
-    width: auto;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+#main .top .files .col.over {
+    background: white;
+}
+#main .top .files .col.moving {
+    -webkit-transform: scale(0.8);
+    background: white;
+    opacity: .8;
+}
+#main .files .col img {
+    max-width: 60px;
+    max-height: 60px;
 }
 #main .top .controls {
     display: block;
@@ -391,20 +395,36 @@ footer {
     width: 100%;
     padding-top: 3em;
 }
-footer a { color: cyan }
-footer p { color: #FFF }
 footer ul {
     list-style-type: none;
     padding: 0;
 }
-footer ul li { display: inline }
+footer ul li { 
+	display: inline; 
+	padding: 0 2% 0 0;
+}
 footer ul,
 footer p,
-footer div { padding: 0 20px }
+footer div { 
+	padding: 0 20px 
+}
 footer #html5-badge {
     position: absolute;
     top: -30px;
 }
+footer a, 
+footer a:visited { 
+	color: cyan; 
+	text-decoration: none;
+}
+footer a:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+footer p { 
+	color: #FFF 
+}
+
 /*************************************************************/
 /*     Helpers
 /*************************************************************/

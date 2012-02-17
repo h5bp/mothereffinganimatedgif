@@ -55,6 +55,9 @@
             binaryURL: _binaryURL
         };
     };
+    
+    var fileList = $("#inimglist");
+    var body = $("body");
 
     var App = {};
     App.MAX_BYTES = 2*1024*1024; // 2MB
@@ -68,13 +71,25 @@
         App.timeline = [];
         body.removeClass("hasfiles");
     };
-
-    var fileList = $("#inimglist");
-    var body = $("body");
+    App.rebuildTimeline = function() {
+        App.timeline = fileList.find(".col").map(function() {
+            var originalimg = new Image();
+            var src = $(this).find("img").attr("src");
+            if (src) {
+                originalimg.src = src;
+                return originalimg;
+            }
+        }).toArray();
+    };
+    
+    setupDrag();
+    
         
     // Bail out if the browser doesn't support required features
     // blobbuilder and a[download] are not required, as there is a fallback
-    if (!FileReaderJS.enabled || !Modernizr.draganddrop) {
+    var support = FileReaderJS.enabled && Modernizr.draganddrop && 
+                    document.querySelector && Modernizr.postmessage && window.JSON;
+    if (!support) {
         body.addClass("disabled");
     }
     
@@ -88,13 +103,13 @@
                 }
             },
             error: function(file) {
-                fileList.append("<li class='error'>Error</li>");
+                fileList.append("<div class='col error'>Error</div>");
             },
             skip: function(file) {
-                fileList.append("<li class='skip'>Skip</li>");
+                fileList.append("<div class='col skip'>Skip</div>");
             },
             load: function(e, file) {
-                fileList.append("<li><img src='"+e.target.result+"' /></li>");
+                fileList.append("<div class='col'><img src='"+e.target.result+"' /></div>");
 
                 var originalimg = new Image();
 
@@ -167,10 +182,8 @@
     $('.play').on('click', function(e) {
         buildGif();
         return false;
-    }); // eo $('.play').on('click', function(e) {
+    });
 
-
-    
     function buildGif() {
 
         if (!App.timeline.length) {
