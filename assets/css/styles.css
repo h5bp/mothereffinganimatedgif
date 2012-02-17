@@ -539,7 +539,8 @@ header .social li {
 
 .onlyfiles .play,
 .onlyfiles .clear,
-.onlyfiles #downloadlink {
+.onlyfiles #downloadlink,
+.onlyfiles #sharelink {
     font-size: 14px;
     font-weight: bold;
     text-shadow: 0 1px 0 rgba(255,255,255,0.35);
@@ -559,7 +560,8 @@ header .social li {
 
 .onlyfiles .play:before,
 .onlyfiles .clear:before,
-.onlyfiles #downloadlink:before {
+.onlyfiles #downloadlink:before, 
+.onlyfiles #sharelink:before {
     content: '';
     position: absolute;
     width: 20px;
@@ -594,10 +596,19 @@ header .social li {
     background-position: 0 -40px;
 }
 
+.onlyfiles #sharelink {
+    color: #243800;
+    background-color: #81bf29;
+}
+.onlyfiles #sharelink:before {
+    background-position: 0 -40px;
+}
+
 
 body.hasfiles #dropArea h2 { display: none }
 body.hasfiles .onlyfiles { display:block;}
 body.hasfiles .onlyfiles #downloadlink{display: none;}
+body.hasfiles .onlyfiles #sharelink{display: none;}
 body.hasfiles #dropArea {display: none;}
 body.drag #dropArea h2 em { color: #02457e; }
 body.drag #dropArea h2 span { border-color: #4a4; }

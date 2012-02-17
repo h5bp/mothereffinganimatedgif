@@ -85,11 +85,13 @@
     App.initialQuality = 10; // 10 is supposed to give a good balance
     App.maxQuality = 20;
     App.timeline = [];
+    App.mfAnimatedGIF = null;
     
     App.clear = function() {
         finalImage.attr("src", "about:blank").hide();
         fileList.empty();
         App.timeline = [];
+        App.mfAnimatedGIF = null;
         body.removeClass("hasfiles");
     };
     App.rebuildTimeline = function() {
@@ -205,13 +207,28 @@
     var finalImage = $("#animresult");
     $(".clear").on('click', function() {
         App.clear();
+        $('#sharelink').css({'display':'none'});
         return false;
     });
     
-
     // kick off GIF generation and download prep
     $('.play').on('click', function(e) {
         buildGif();
+        return false;
+    });
+
+    $('#sharelink').on('click', function(e) {
+        var filename = "animated."+((+new Date()) + "").substr(8);
+
+        // Imgur takes the image data, filename, title, caption, success callback and error callback
+        ShareGIFWith.imgur(App.mfAnimatedGIF.rawDataURL(), filename, '', '', 
+        function(deletePage, imgurPage, largeThumbnail, original, smallSquare) {
+            alert(imgurPage);
+        }, 
+        function() {
+            alert('Could not upload image to imgur.');
+        });
+
         return false;
     });
 
@@ -226,7 +243,7 @@
             rotations.push($(el).data('rotation'));
         });
 
-        var mfAnimatedGIF = new MFAnimatedGIF({
+        App.mfAnimatedGIF = new MFAnimatedGIF({
             images: App.timeline,
             rotations: rotations,
             delay : App.rate, 
@@ -238,7 +255,10 @@
             width : App.animWidth  || App.timeline[0].width
         });
 
-        $('#animresult').attr('src', mfAnimatedGIF.dataURL());
+        // todo the following will display the share link when ready 
+        // $('#sharelink').css({'display':'inline-block'});
+
+        $('#animresult').attr('src', App.mfAnimatedGIF.dataURL());
 
         //
         // Create the download link
@@ -253,7 +273,7 @@
 
         if(Modernizr.download && Modernizr.bloburls && Modernizr.blobbuilder) {
             a.download = filename + '.gif';
-            a.href = mfAnimatedGIF.binaryURL(filename);
+            a.href = App.mfAnimatedGIF.binaryURL(filename);
             a.style.display = "inline-block";
 
             a.onclick = function(e) {
@@ -273,7 +293,7 @@
             };
 
             var iframe = document.querySelector('#saveasbro');
-            iframe.contentWindow.postMessage(JSON.stringify({name:filename, data: mfAnimatedGIF.rawDataURL(), formdata: Modernizr.formdata}),"http://saveasbro.com/gif/");
+            iframe.contentWindow.postMessage(JSON.stringify({name:filename, data: App.mfAnimatedGIF.rawDataURL(), formdata: Modernizr.formdata}),"http://saveasbro.com/gif/");
         }
 
     }
