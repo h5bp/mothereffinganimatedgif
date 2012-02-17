@@ -616,7 +616,7 @@ body.drag #dropArea h2 span { border-color: #4a4; }
 /*************************************************************/
 
 footer {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
