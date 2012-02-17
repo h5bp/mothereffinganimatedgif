@@ -198,6 +198,30 @@ table {
 td { vertical-align: top }
 
 /*************************************************************/
+/*  Speed Project Approved
+/*************************************************************/
+
+#speedProject {
+    position: absolute;
+    z-index: 999;
+    bottom: 5px;
+    right: 270px;
+    width: 40px;
+    -webkit-transition: all linear .25s;
+    -moz-transition: all linear .25s;
+    -ms-transition: all linear .25s;
+    transition: all linear .25s;
+}
+
+#speedProject:hover {
+    width: 125px;
+    right: 240px;
+    -webkit-transform: rotate(35deg);
+    -moz-transform: rotate(35deg);
+    transform: rotate(35deg);
+}
+
+/*************************************************************/
 /*  Global
 /*************************************************************/
 
@@ -309,6 +333,9 @@ header p, footer p {
     background-image: -ms-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
     background-image: -o-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
     background-image: linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+}
+footer p {
+    padding-top: 0;
 }
 header .social {
     float: right;
