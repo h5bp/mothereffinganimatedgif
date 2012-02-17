@@ -289,7 +289,7 @@ header h1 {
     display: block;
     float: left;
 }
-header p {
+header p, footer p {
     display: block;
     float: left;
     line-height: 11px;
@@ -590,6 +590,14 @@ footer #html5-badge {
     position: absolute;
     top: -32px;
     left: 20px;
+}
+footer p {
+    border: 0;
+    background: none;
+    float: right;
+}
+footer a:link, footer a:visited {
+    color: #aaa;
 }
 
 /*************************************************************/
