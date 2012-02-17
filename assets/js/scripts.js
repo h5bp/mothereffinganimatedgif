@@ -90,6 +90,8 @@
                 var originalimg = new Image();
 
                 if (App.timeline.length === 0){
+                    // TODO: do we need this?
+                    // App.timeline[0].width seems to work fine when called in groupend
                     originalimg.onload = function(){
                         App.initialWidth    = originalimg.width;
                         App.initialHeight   = originalimg.height;
@@ -104,6 +106,8 @@
                 $("body").addClass("hasfiles");
             },
             groupend: function(group) {
+                // TOOOOOO SLOW
+                //buildGif();
             }
         }
     };
@@ -154,15 +158,26 @@
 
     // kick off GIF generation and download prep
     $('.play').on('click', function(e) {
+        buildGif();
+        return false;
+    }); // eo $('.play').on('click', function(e) {
 
+
+    
+    function buildGif() {
+
+        if (!App.timeline.length) {
+            return;
+        }
+        
         var mfAnimatedGIF = new MFAnimatedGIF({
             images: App.timeline, 
-            delay : 300, 
+            delay : 10000, 
             repeat: false, 
 
             // use dimensions from first image as default
-            height: App.animHeight, 
-            width : App.animWidth 
+            height: App.initialWidth || App.timeline[0].height,
+            width : App.initialWidth || App.timeline[0].width
         });
 
         $('#animresult').attr('src', mfAnimatedGIF.dataURL());
@@ -203,6 +218,5 @@
             iframe.contentWindow.postMessage(JSON.stringify({name:filename, data: mfAnimatedGIF.dataURL(), formdata: Modernizr.formdata}),"http://saveasbro.com");
         }
 
-        return false;
-    }); // eo $('.play').on('click', function(e) {
-
+    }
+    

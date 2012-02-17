@@ -237,11 +237,10 @@ body.disabled .nosupport{
         font-style:normal;
     }
     
-    /* Should we hide the drop text once some have dropped?
     body.hasfiles #dropArea h2 {
         display:none;
     }    
-    */
+    
     body.drag #dropArea h2 em{
         color: #393;
     }
@@ -251,6 +250,10 @@ body.disabled .nosupport{
     #inimglist li.error, #inimglist li.skip{
         color: red;
         text-align: center;
+    }
+    #results {
+        text-align: center;
+        padding: 10px;
     }
 
 /*************************************************************/
