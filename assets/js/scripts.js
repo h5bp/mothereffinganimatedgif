@@ -107,18 +107,7 @@
     
     setupDrag();
     
-        
-    // Bail out if the browser doesn't support required features
-    // blobbuilder and a[download] are not required, as there is a fallback
-    var support = FileReaderJS.enabled && Modernizr.draganddrop && 
-                    document.querySelector && Modernizr.postmessage && window.JSON;
-    if (!support) {
-        body.addClass("disabled");
-        var caniscript = document.createElement('script');
-        caniscript.src = 'http://sandbox.thewikies.com/caniuse/json+filereader+draganddrop+querySelector+postmessage.html?callback=canicallback';
-        document.body.appendChild(caniscript);
-    }
-    
+
     // drag and drop setup.
     var opts = {
         accept: 'image/*',
@@ -162,9 +151,24 @@
         }
     };
 
-    // the library handles most of the dnd bits.
-    FileReaderJS.setupDrop(document.body, opts);
-    FileReaderJS.setupClipboard(document.body, opts);
+
+    // Bail out if the browser doesn't support required features
+    // blobbuilder and a[download] are not required, as there is a fallback
+    var support = FileReaderJS.enabled && Modernizr.draganddrop &&
+                    document.querySelector && Modernizr.postmessage && window.JSON;
+    if (!support) {
+        body.addClass("disabled");
+        var caniscript = document.createElement('script');
+        caniscript.src = 'http://sandbox.thewikies.com/caniuse/json+filereader+draganddrop+querySelector+postmessage.html?callback=canicallback';
+        document.body.appendChild(caniscript);
+
+    } else {
+
+        // the library handles most of the dnd bits.
+        FileReaderJS.setupDrop(document.body, opts);
+        FileReaderJS.setupClipboard(document.body, opts);
+
+    }
 
     $(document).on('click', '.rotateimg', function(e) {
         var currentRotation = parseInt($(e.currentTarget).attr('data-rotation')) + 90;
