@@ -180,8 +180,8 @@
             repeat: false, 
 
             // use dimensions from first image as default
-            height: App.animWidth || App.timeline[0].height,
-            width : App.animWidth || App.timeline[0].width
+            height: App.animHeight || App.timeline[0].height,
+            width : App.animWidth  || App.timeline[0].width
         });
 
         $('#animresult').attr('src', mfAnimatedGIF.dataURL());
