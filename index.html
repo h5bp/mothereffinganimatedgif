@@ -3,7 +3,7 @@
 <!-- eventually add manifest="/cache.manifest" to the HTML tag -->
 
 <!--[if lte IE 8]><html class="no-js oldie shitty shit" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" manifest="cache.manifest"><!--<![endif]-->
 <head>
     
 <!-- 
@@ -37,8 +37,8 @@
     
     <!-- cache & network update notification -->
     <!-- UNCOMMENT TO GET GOING WITH YOUR MANIFEST -->
-    <!-- <script src="assets/js/cache.update.js"></script> -->
-    <!-- <script src="assets/js/network.status.js"></script> -->
+    <script src="assets/js/cache.update.js"></script>
+    <script src="assets/js/network.status.js"></script>
 
 </head>
 <body>
@@ -98,7 +98,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="132px" height="20p
         </div>
 
         <footer id="footer" role="contentinfo">
-              <div id="html5-badge"><a href="http://www.w3.org/html/logo/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage"></a>
+              <div id="html5-badge"><a href="http://www.w3.org/html/logo"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage"></a>
               </div>
               <p>
                 Made by the crew behind <a href="https://github.com/paulirish/lazyweb-requests/issues/53">lazyweb-requests#53</a>
@@ -120,10 +120,10 @@ allowtransparency="true" frameborder="0" scrolling="0" width="132px" height="20p
     <script src="assets/js/scripts.js"></script>
 
   <script>
-    var _gaq=[['_setAccount','UA-18857974-3'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
+    //var _gaq=[['_setAccount','UA-18857974-3'],['_trackPageview']];
+    //(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    //g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    //s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 
 </body>
