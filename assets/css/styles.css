@@ -360,6 +360,17 @@ header .social li {
     position: relative;
     text-align: center;
 }
+
+#main .files .col:hover:before {
+    content : "↻";
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px 2px #ccc;
+    position:absolute;
+    bottom: -20px;
+    right: 10px;
+}
+
 #main .top .files .col.over {
     background: white;
 }
@@ -374,6 +385,7 @@ header .social li {
     max-width: 60px;
     max-height: 60px;
 }
+
 #main .files .col .fill {
     position:absolute;top:0;left:0;bottom:0;right:0;
 }
