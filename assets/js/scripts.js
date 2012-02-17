@@ -30,7 +30,7 @@
             canvas.width  = opts.width;
             canvas.height = opts.height;
             encoder.setSize(opts.width, opts.height);
-            encoder.setQuality(opts.quality);
+            encoder.setQuality(App.maxQuality + 1 - (App.maxQuality * (opts.quality / 10)));
 
             encoder.start();
 
@@ -83,6 +83,7 @@
     App.MAX_BYTES = 2*1024*1024; // 2MB
     App.initialRate = 300; // 300ms delay in frames
     App.initialQuality = 10; // 10 is supposed to give a good balance
+    App.maxQuality = 20;
     App.timeline = [];
     
     App.clear = function() {
