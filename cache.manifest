@@ -6,7 +6,7 @@ CACHE MANIFEST
 # https://github.com/paulirish/lazyweb-requests/issues/53
 #
 # Version Control
-# v1.1.0 02-17-2012
+# v1.1.1 02-17-2012
 #
 # Handy Dandy Developer Tools
 # CHROME chrome://appcache-internals 
@@ -38,10 +38,6 @@ assets/img/icons.png
 http://markdotto.github.com/github-buttons/github-icons.png
 http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png
 assets/img/project_approved.png
-#
-# this call comes up through charles as of 02/17/2012
-# but there is nothing at this address - blank screen
-http://saveasbro.com/gif
 #
 # Github Buttons
 http://markdotto.github.com/github-buttons/github-btn.html?user=h5bp&repo=mothereffinganimatedgif&type=fork&count=true
@@ -91,6 +87,8 @@ https://api.github.com/repos/paulirish/lazyweb-requests?callback=callback
 # this call below keeps poppping up on my end through 
 # charles for windows 7 and mac 10.7.2
 https://api.github.com:443
-
+# this call comes up through charles as of 02/17/2012
+# but there is nothing at this address - blank screen
+http://saveasbro.com/gif
 
 FALLBACK:
