@@ -74,61 +74,187 @@ $(window).bind('firstimage', function(){
 
 var samples = samples || {};
 
+
+// nativesortable
+// Author: Brian Grinstead MIT License
+// Originally based on code found here:
 // http://www.html5rocks.com/en/tutorials/dnd/basics/#toc-examples
-function setupDrag() {
 
-  var container = $("#inimglist");
-  var dragSrcEl_ = null;
+// Usage:
+// var list = document.getElementByID("list");
+// nativesortable(list, "li" [, { change: onchange }]);
 
-  var handleDragStart = function(e) {
-    e.originalEvent.dataTransfer.effectAllowed = 'move';
-    e.originalEvent.dataTransfer.setData('text/html', this.innerHTML);
-    dragSrcEl_ = this;
-    $(this).addClass('moving');
-  };
-
-  var handleDragOver = function(e) {
-    if (e.originalEvent.preventDefault) {
-      e.originalEvent.preventDefault(); // Allows us to drop.
+nativesortable = (function() {
+    
+    function hasClassName(el, name) {
+        return new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)").test(el.className);
     }
-  
-    e.originalEvent.dataTransfer.dropEffect = 'move';
 
-  };
-
-  var handleDragEnter = function(e) {
-    $(this).addClass('over');
-  };
-
-  var handleDragLeave = function(e) {
-    // this/e.target is previous target element.
-    $(this).removeClass('over');
-  };
-
-  var handleDrop = function(e) {
-  
-    if (e.originalEvent.stopPropagation) {
-      e.originalEvent.stopPropagation(); // stops the browser from redirecting.
+    function addClassName (el, name) {
+        if (!hasClassName(el, name)) {
+          el.className = el.className ? [el.className, name].join(' ') : name;
+        }
     }
     
-    if (dragSrcEl_ != this) {
-       dragSrcEl_.innerHTML = this.innerHTML;
-       this.innerHTML = e.originalEvent.dataTransfer.getData('text/html');
-       App.rebuildTimeline();
-       handleDragEnd();
+    function removeClassName(el, name) {
+        if (hasClassName(el, name)) {
+          var c = el.className;
+          el.className = c.replace(new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)", "g"), "");
+        }
     }
     
-  };
+    function matchesSelector(el, selector) {
+        if (el.matchesSelector)
+            return el.matchesSelector(selector);
+        if (el.webkitMatchesSelector)
+            return el.webkitMatchesSelector(selector);
+        if (el.mozMatchesSelector)
+            return el.mozMatchesSelector(selector);
+        if (el.msMatchesSelector)
+            return el.msMatchesSelector(selector);
+        return false;
+    }
+    
+    function isBelow(el1, el2) {
+    
+        var parent = el1.parentNode;
+        if (el2.parentNode != parent) {
+            return false;
+        }
+        
+        var cur = el1.previousSibling;
+        while (cur && cur.nodeType !== 9) {
+            if (cur === el2) {
+                return true;
+            }
+            cur = cur.previousSibling;
+        }
+        return false;
+    }
+    
+    function closest(child, selector) {
+        var cur = child;
+        while (cur) {
+            if (matchesSelector(cur, selector)) {
+                return cur;
+            }
+            cur = cur.parentNode;
+            if ( !cur || !cur.ownerDocument || cur.nodeType === 11 ) {
+                break;
+            }
+        }
+        return null;
+    }
+    
+    return function(element, childSelector, opts) {
+        if (!opts) {
+            opts = { }; 
+        }
+        
+        var currentlyDraggingElement = null;
+        
+        function handleDragStart(e) {
+        
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('Text', "*"); // Need to set to something or else drag doesn't start
+            
+            currentlyDraggingElement = this;
+            addClassName(currentlyDraggingElement, 'moving');
+        }
+        function handleDragOver(e) {
+            if (!currentlyDraggingElement) {
+                return true;
+            }
+            
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            return false;
+        }
+        
+        function handleDragEnter(e) {
+            if (!currentlyDraggingElement) {
+                return true;
+            }
+            
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            
+            // over class can stick if mousing over an image quickly.
+            [].forEach.call(element.querySelectorAll(childSelector), function(el) {
+                removeClassName(el, 'over');
+            });
+            addClassName(this, 'over');
+            return false;
+        }
+        
+        function handleDragLeave(e) {
+            removeClassName(this, 'over');
+        }
+        
+        function handleDrop(e) {
+        
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            
+            if (isBelow(currentlyDraggingElement, this)) {
+                // Insert before.
+                this.parentNode.insertBefore(currentlyDraggingElement, this);
+            
+            }
+            else {
+                // Insert after.
+                this.parentNode.insertBefore(currentlyDraggingElement, this.nextSibling);
+            }
+            
+            if (opts.change) {
+                opts.change(this, currentlyDraggingElement);
+            }
+        }
+        
+        function handleDragEnd(e) {
+            currentlyDraggingElement = null;
+            [].forEach.call(element.querySelectorAll(childSelector), function(el) {
+                removeClassName(el, 'over');
+                removeClassName(el, 'moving');
+            });
+        }
+        function delegate(fn) {
+            return function(e) {
+            
+                if (matchesSelector(e.target, childSelector)) {
+                    fn.apply(e.target, [e]);
+                }
+                // Images and links are draggable by default.  Make them trigger events for the parent.
+                else if (e.target.tagName === "IMG" || e.target.tagName === "A") {
+                    context = closest(e.target, childSelector);
+                    
+                    if (context) {
+                        fn.apply(context, [e]);
+                        
+                        if (e.type == "dragover" || e.type == "dragleave") {
+                            addClassName(context, 'over');
+                        }
+                    }
+                }
+            }
+        }
+        
+        element.addEventListener('dragstart', delegate(handleDragStart), false);
+        element.addEventListener('dragenter', delegate(handleDragEnter), false)
+        element.addEventListener('dragover', delegate(handleDragOver), false);
+        element.addEventListener('dragleave', delegate(handleDragLeave), false);
+        element.addEventListener('drop', delegate(handleDrop), false);
+        element.addEventListener('dragend', delegate(handleDragEnd), false);
 
-  var handleDragEnd = function() {
-    container.find(".col").removeClass("over moving");
-  };
-  
-  container.on("dragstart", ".col", handleDragStart);
-  container.on("dragenter", ".col", handleDragEnter);
-  container.on("dragover", ".col", handleDragOver);
-  container.on("dragleave", ".col", handleDragLeave);
-  container.on("drop", ".col", handleDrop);
-  container.on("dragend", ".col", handleDragEnd);
-}
+        [].forEach.call(element.querySelectorAll(childSelector), function(el) {
+            el.setAttribute("draggable", "true");
+        });
+    }
+})();
 
