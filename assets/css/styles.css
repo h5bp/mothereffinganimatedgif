@@ -572,6 +572,11 @@ header .social li {
     background: url(../img/icons.png) no-repeat 0 0;
 }
 
+.onlyfiles #sharelink:before{
+    content: '⇒';
+    background:none;
+}
+
 .onlyfiles .play {
     color: #001f2e;
     background-color: #4388c9;

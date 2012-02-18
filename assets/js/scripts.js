@@ -227,10 +227,10 @@
         // Imgur takes the image data, filename, title, caption, success callback and error callback
         ShareGIFWith.imgur(App.mfAnimatedGIF.rawDataURL(), filename, '', '', 
         function(deletePage, imgurPage, largeThumbnail, original, smallSquare) {
-            alert(imgurPage);
+            prompt('Boom! Your image is now available on imgur. Copy the link below:', imgurPage);
         }, 
         function() {
-            alert('Could not upload image to imgur.');
+            alert('Could not upload image to imgur. :/  Sorry.');
         });
 
         return false;
@@ -260,7 +260,7 @@
         });
 
         // todo the following will display the share link when ready 
-        // $('#sharelink').css({'display':'inline-block'});
+        $('#sharelink').css({'display':'inline-block'});
 
         $('#animresult').attr('src', App.mfAnimatedGIF.dataURL());
 
