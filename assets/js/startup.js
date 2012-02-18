@@ -1,4 +1,4 @@
-/*global Modernizr:false, FileReaderJS:false */
+/*global Modernizr, FileReaderJS, MFAApp MFAAppView, TimelineView */
 
 
 // test to see if we can do cool download or fallback style.
