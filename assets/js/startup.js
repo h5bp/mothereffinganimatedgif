@@ -1,28 +1,18 @@
+/*global Modernizr:false, FileReaderJS:false */
+
+
 // test to see if we can do cool download or fallback style.
-Modernizr.addTest({
-    // BlobBuilder
-    "blobbuilder": function() {
-        return  !!(window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder);
-    },
-    // Blob URL support
-    "bloburls": function() {
-        return !!(window.URL && window.URL.createObjectURL || window.webkitURL && window.webkitURL.createObjectURL);
-    },
-    // download attribute
-    "download": function() {
-        return "download" in document.createElement("a");
-    },
-    // FormData
-    "formdata": function() {
-        return  !!(window.FormData && "append" in window.FormData.prototype);
-    }
-});
+Modernizr
+    .addTest("blobbuilder", !!(window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder))
+    .addTest("bloburls",    !!(window.URL && window.URL.createObjectURL || window.webkitURL && window.webkitURL.createObjectURL))
+    .addTest("download",    "download" in document.createElement("a"))
+    .addTest("formdata",    !!(window.FormData && "append" in window.FormData.prototype));
 
-if(!Modernizr.download && $('#saveabro')) {
+
+if(!Modernizr.download && !$('#saveasbro').length) {
     var iframe = document.createElement("iframe");
-
     iframe.src = "http://saveasbro.com/gif/";
-    iframe.setAttribute("style","position: absolute; visibility: hidden; left: -999em;");
+    iframe.style = "position: absolute; visibility: hidden; left: -999em;";
     iframe.id = "saveasbro";
     document.body.appendChild(iframe);
 }
