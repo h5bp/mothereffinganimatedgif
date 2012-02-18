@@ -181,7 +181,6 @@
             width : App.animWidth  || App.timeline[0].width
         });
 
-        // todo the following will display the share link when ready 
         $('#sharelink').css({'display':'inline-block'});
 
         $('#animresult').attr('src', App.mfAnimatedGIF.dataURL());
