@@ -27,7 +27,11 @@
         }).toArray();
     };
     
-    setupDrag();
+    nativesortable(fileList[0], ".col", {
+        change: function() {
+            App.rebuildTimeline();
+        }
+    });
     
 
     // drag and drop setup.
@@ -40,13 +44,13 @@
                 }
             },
             error: function(file) {
-                fileList.append("<div class='col error'>Error<div class='fil3l'></div></div>");
+                fileList.append("<div draggable=true class='col error'>Error<div class='fil3l'></div></div>");
             },
             skip: function(file) {
-                fileList.append("<div class='col skip'>Skip<div class='fil3l'></div></div>");
+                fileList.append("<div draggable=true class='col skip'>Skip<div class='fil3l'></div></div>");
             },
             load: function(e, file) {
-                fileList.append("<div class='col'><img class='rotateimg' data-rotation='0' src='"+e.target.result+"' /><div class='fil3l'></div></div>");
+                fileList.append("<div draggable=true class='col'><img class='rotateimg' data-rotation='0' src='"+e.target.result+"' /><div class='fil3l'></div></div>");
 
                 var originalimg = new Image();
 
