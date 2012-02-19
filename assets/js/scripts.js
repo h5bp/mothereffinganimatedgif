@@ -1,81 +1,3 @@
-
-    // handles interfacing with GIFEncoder
-    var MFAnimatedGIF = function(opts) {
-        var encoder;
-
-        var _rotate = function(image, rotation) {
-            var canvas = document.createElement("canvas");
-
-            canvas.width = image.width;
-            canvas.height = image.height;
-
-            var ctx = canvas.getContext('2d');
-            ctx.translate(image.width/2, image.height/2);
-            ctx.rotate(rotation * Math.PI / 180.0);
-            ctx.drawImage(image, -image.width/2, -image.height/2, image.width, image.height);
-            ctx.rotate(rotation * Math.PI / 180.0);
-            ctx.translate(-image.width/2, -image.height/2);
-
-            return canvas;
-        };
-
-        var _initialize = function(opts) {
-
-            var canvas = document.createElement("canvas");
-            var context = canvas.getContext('2d');
-
-            encoder = new GIFEncoder();
-            encoder.setRepeat(opts.repeat);
-            encoder.setDelay(opts.delay);
-            canvas.width  = opts.width;
-            canvas.height = opts.height;
-            encoder.setSize(opts.width, opts.height);
-            encoder.setQuality(App.maxQuality + 1 - (App.maxQuality * (opts.quality / 10)));
-
-            encoder.start();
-
-            for(var i=0; i<opts.images.length; i++) {
-                var animframe = (opts.rotations[i] === 0) ? opts.images[i] : _rotate(opts.images[i], opts.rotations[i]);
-
-                var ctx = canvas.getContext('2d');
-                ctx.drawImage(animframe, 0, 0, animframe.width, animframe.height, 0, 0, canvas.width, canvas.height);
-                
-                encoder.addFrame(ctx);    
-            }
-
-            encoder.finish();
-        };
-
-        var _rawDataURL = function() {
-            return $.base64.encode(encoder.stream().getData());
-        };
-
-        var _dataURL = function() {
-            return 'data:image/gif;base64,' + _rawDataURL();
-        };
-
-        var _binaryURL = function() {
-            // Convert encoder data to binary format
-            var data = encoder.stream().getData();
-            var byteArray = new Uint8Array(data.length);
-            for (var i = 0; i < data.length; i++) {
-                byteArray[i] = data.charCodeAt(i) & 0xff;
-            }
-
-            var bb = new BlobBuilder();
-            bb.append(byteArray.buffer);
-            return window.URL.createObjectURL(bb.getBlob("image/gif"));
-        };
-
-        _initialize(opts);
-
-        return {
-            dataURL   : _dataURL,
-            rawDataURL: _rawDataURL,
-            binaryURL : _binaryURL
-        };
-    };
-    
     var fileList = $("#inimglist");
     var body = $("body");
 
@@ -107,18 +29,7 @@
     
     setupDrag();
     
-        
-    // Bail out if the browser doesn't support required features
-    // blobbuilder and a[download] are not required, as there is a fallback
-    var support = FileReaderJS.enabled && Modernizr.draganddrop && 
-                    document.querySelector && Modernizr.postmessage && window.JSON;
-    if (!support) {
-        body.addClass("disabled");
-        var caniscript = document.createElement('script');
-        caniscript.src = 'http://sandbox.thewikies.com/caniuse/json+filereader+draganddrop+querySelector+postmessage.html?callback=canicallback';
-        document.body.appendChild(caniscript);
-    }
-    
+
     // drag and drop setup.
     var opts = {
         accept: 'image/*',
@@ -162,9 +73,24 @@
         }
     };
 
-    // the library handles most of the dnd bits.
-    FileReaderJS.setupDrop(document.body, opts);
-    FileReaderJS.setupClipboard(document.body, opts);
+
+    // Bail out if the browser doesn't support required features
+    // blobbuilder and a[download] are not required, as there is a fallback
+    var support = FileReaderJS.enabled && Modernizr.draganddrop &&
+                    document.querySelector && Modernizr.postmessage && window.JSON;
+    if (!support) {
+        body.addClass("disabled");
+        var caniscript = document.createElement('script');
+        caniscript.src = 'http://sandbox.thewikies.com/caniuse/json+filereader+draganddrop+querySelector+postmessage.html?callback=canicallback';
+        document.body.appendChild(caniscript);
+
+    } else {
+
+        // the library handles most of the dnd bits.
+        FileReaderJS.setupDrop(document.body, opts);
+        FileReaderJS.setupClipboard(document.body, opts);
+
+    }
 
     $(document).on('click', '.rotateimg', function(e) {
         var currentRotation = parseInt($(e.currentTarget).attr('data-rotation')) + 90;
@@ -223,10 +149,10 @@
         // Imgur takes the image data, filename, title, caption, success callback and error callback
         ShareGIFWith.imgur(App.mfAnimatedGIF.rawDataURL(), filename, '', '', 
         function(deletePage, imgurPage, largeThumbnail, original, smallSquare) {
-            alert(imgurPage);
+            prompt('Boom! Your image is now available on imgur. Copy the link below:', imgurPage);
         }, 
         function() {
-            alert('Could not upload image to imgur.');
+            alert('Could not upload image to imgur. :/  Sorry.');
         });
 
         return false;
@@ -243,7 +169,11 @@
             rotations.push($(el).data('rotation'));
         });
 
-        App.mfAnimatedGIF = new MFAnimatedGIF({
+        console.time('App.mfAnimatedGIF()');
+
+        var worker = new Worker('/assets/js/worker.js');
+
+        var animOpts = {
             images: App.timeline,
             rotations: rotations,
             delay : App.rate, 
@@ -253,10 +183,13 @@
             // use dimensions from first image as default
             height: App.animHeight || App.timeline[0].height,
             width : App.animWidth  || App.timeline[0].width
-        });
+        }
 
-        // todo the following will display the share link when ready 
-        // $('#sharelink').css({'display':'inline-block'});
+        App.mfAnimatedGIF = new MFAnimatedGIF(animOpts); // TODO: should be done in worker
+
+        console.timeEnd('App.mfAnimatedGIF()');
+
+        $('#sharelink').css({'display':'inline-block'});
 
         $('#animresult').attr('src', App.mfAnimatedGIF.dataURL());
 
