@@ -28,9 +28,7 @@ if (!support) {
     document.body.appendChild(caniscript);
 } else {
 
-    // todo as soon as the d&d swap images is gone this can be remove from window.app and leave only the view in place
-    window.app = new MFAApp();
-    window.appView = new MFAAppView({model: window.app});
+    window.appView = new MFAAppView({model: new MFAApp()});
 
     // drag and drop file setup.
     var opts = {
@@ -46,9 +44,6 @@ if (!support) {
             },
             load: function(e, file) {
                 $('div#inimglist').trigger('filedropsuccess', [e.target.result, file]);
-            },
-            groupstart: function(group) {
-                $("body").addClass("hasfiles"); // todo let the view handle this
             }
         }
     };
@@ -56,8 +51,6 @@ if (!support) {
     // the library handles most of the dnd bits.
     FileReaderJS.setupDrop(document.body, opts);
     FileReaderJS.setupClipboard(document.body, opts);
-
-    setupDrag();
 }
 
 function canicallback(data) {

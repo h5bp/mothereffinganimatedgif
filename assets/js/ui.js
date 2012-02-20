@@ -3,16 +3,9 @@ var AnimateButtonView = Backbone.View.extend({
         'click': 'generateAnimation'
     },
     generateAnimation: function(e) {
-        // todo can rotations be integrated into the image items?
-        var self = this;
-        $('.rotateimg').each(function(i, rel) {
-            self.model.get('timeline').at(i).set('rotation', $(rel).data('rotation'));
-        });
-
-        var animatedGIF = this.model.getAnimatedGIF();
-
+        this.model.generateAnimatedGIF();
         return false;
-    },
+    }
 });
 
 var ResetButtonView = Backbone.View.extend({
@@ -23,7 +16,7 @@ var ResetButtonView = Backbone.View.extend({
         this.model.restart();
 
         return false;
-    },
+    }
 });
 
 var ShareButtonView = Backbone.View.extend({
@@ -130,12 +123,39 @@ var ResultsView = Backbone.View.extend({
     }
 });
 
+var TimelineImageView = Backbone.View.extend({
+    tagName: 'div',
+    tagClass: 'col',
+    events: {
+        'click': 'rotateTimelineImage'
+    },
+    initialize: function() {
+        this.model.bind('destroy', this.remove, this);
+    },
+    rotateTimelineImage: function(e) {
+        var currentRotation = this.model.get('rotation') + 90;
+        if(currentRotation >= 360) currentRotation = 0;
+        this.model.set('rotation', currentRotation);
+
+        this.$el.find('img').rotate(currentRotation);
+    },
+    render: function() {
+        this.$el.html("<div class='col'><img class='rotateimg' src='" + this.model.getSrc() + "' /><div class='fil3l'></div></div>");
+        return this;
+    }
+});
+
 var TimelineView = Backbone.View.extend({
     events: {
         'filedropsuccess': 'insertFile',
         'filedroperror': 'fileError',
 
-        'click .rotateimg': 'rotateTimelineImage',
+        'dragstart .col': 'dragStart',
+        'dragenter .col': 'dragEnter',
+        'dragover .col': 'dragOver',
+        'dragleave .col': 'dragLeave',
+        'drop .col': 'drop',
+        'dragend .col': 'dragEnd'
     },
     initialize: function() {
         this.model.on('restart', this.restartTimeline, this);
@@ -148,18 +168,49 @@ var TimelineView = Backbone.View.extend({
         timelineImage.setSrc(fileData);
         this.model.addImage(timelineImage);
 
-        // todo TimelineImageView.render
-        this.$el.append("<div class='col'><img class='rotateimg' data-rotation='0' src='" + fileData + "' /><div class='fil3l'></div></div>");
+        var timelineImageView = new TimelineImageView({model: timelineImage});
+        this.$el.append(timelineImageView.render().el);
     },
     fileError: function(e, fileInfo) {
         this.$el.append("<div class='col error'>Error<div class='fil3l'></div></div>");
     },
-    rotateTimelineImage: function(e) {
-        // todo can we stop putting the data in a data attr and instead tie it directly to the model?
-        var currentRotation = parseInt($(e.currentTarget).attr('data-rotation')) + 90;
-        if(currentRotation >= 360) currentRotation = 0;
-        $(e.currentTarget).rotate(currentRotation);
-        $(e.currentTarget).attr('data-rotation', currentRotation);
+    dragStart: function(e) {
+        e.originalEvent.dataTransfer.effectAllowed = 'move';
+        e.originalEvent.dataTransfer.setData('text/html', $(e.srcElement).html());
+
+        $(e.srcElement).addClass('moving');
+        this.dragSrcEl_ = $(e.srcElement).parent();
+    },
+    dragOver: function(e) {
+        if (e.originalEvent.preventDefault) {
+            e.originalEvent.preventDefault(); // Allows us to drop.
+        }
+        e.originalEvent.dataTransfer.dropEffect = 'move';
+    },
+    dragEnter: function(e) {
+        $(e.srcElement).addClass('over');
+    },
+    dragLeave: function(e) {
+        $(e.srcElement).removeClass('over'); // this/e.target is previous target element.
+    },
+    drop: function(e) {
+        if (e.originalEvent.stopPropagation) {
+            e.originalEvent.stopPropagation(); // stops the browser from redirecting.
+        }
+    
+        var dropTarget = $(e.srcElement);
+        if (dropTarget.hasClass('col') && this.dragSrcEl_.html() != dropTarget.html()) {
+           this.dragSrcEl_.html(dropTarget.html());
+           dropTarget.html(e.originalEvent.dataTransfer.getData('text/html'));
+
+           this.model.swapImages(this.dragSrcEl_.children().get(0), dropTarget.children().get(0));
+
+           this.dragEnd(null);
+        }
+    },
+    dragEnd: function(e) {
+        this.$el.find('.col').removeClass('over moving');
+        $('body').removeClass('drag'); // todo not sure what is adding this class to the body but it causes problems if it isn't removed
     }
 });
 
@@ -169,12 +220,15 @@ var QualitySliderView = Backbone.View.extend({
         'change input': 'setQuality',
     },
     initialize: function() {
+        this.model.on('change:quality', this.render, this);
 		    this.model.setQuality(this.$el.find('input').val());
-        this.$el.find('output').html(this.model.get('quality') + '<span>goodnesses</span>');
     },
     setQuality: function(e) {
 		    this.model.setQuality($(e.target).val());
+    },
+    render: function() {
         this.$el.find('output').html(this.model.get('quality') + '<span>goodnesses</span>');
+        return this;
     }
 });
 
@@ -183,30 +237,35 @@ var RateSliderView = Backbone.View.extend({
         'change input': 'setRate'
     },
     initialize: function() {
+        this.model.on('change:rate', this.render, this);
 		    this.model.setRate(this.$el.find('input').val());
-        this.$el.find('output').html(this.model.get('rate') + '<span>ms</span>');
     },
     setRate: function(e) {
 		    this.model.setRate($(e.target).val());
+    },
+    render: function() {
         this.$el.find('output').html(this.model.get('rate') + '<span>ms</span>');
+        return this;
     }
 });
 
+// todo Seems like there should be a way to remove the need for access to the timeline in this
+//      view and restrict it to only needing access to the settings.
 var SizeSliderView = Backbone.View.extend({
     events: {
         'change input': 'setSize'
     },
     _setInitialSize: function(initialWidth, initialHeight) {
-        this.model.set('aspectRatio', initialHeight / initialWidth);
+        this.model.get('settings').set('aspectRatio', initialHeight / initialWidth);
 
         this.$el.find('input').attr('max', initialWidth);
         this.$el.find('input').attr('value', initialWidth);
 
-        this.$el.find('output').html(initialWidth + '<span>px</span>'); // todo move stuff like this to render
-
-        this.model.setSize(Math.floor(initialWidth * this.model.get('aspectRatio')), initialWidth);
+        this.model.get('settings').setSize(Math.floor(initialWidth * this.model.get('settings').get('aspectRatio')), initialWidth);
     },
     initialize: function() {
+        this.model.get('settings').on('change:animWidth change:animHeight', this.render, this);
+
         // After an image has been added to the timeline we need to know the size
         var self = this;
         this.model.get('timeline').on('add', function(item) {
@@ -222,17 +281,18 @@ var SizeSliderView = Backbone.View.extend({
     },
     setSize: function(e) {
         var width = $(e.target).val();
-
-        this.$el.find('output').html(width + '<span>px</span>'); // todo move stuff like this to render
-
-        this.model.setSize(Math.floor(width * this.model.get('aspectRatio')), width);
+        this.model.get('settings').setSize(Math.floor(width * this.model.get('settings').get('aspectRatio')), width);
+    },
+    render: function() {
+        this.$el.find('output').html(this.model.get('settings').get('animWidth') + '<span>px</span>');
+        return this;
     }
 });
 
 var SettingsView = Backbone.View.extend({
     initialize: function() {
-      this.qualitySliderView = new QualitySliderView({model: this.model, el: this.$el.find('.quality')});
-      this.rateSliderView = new RateSliderView({model: this.model, el: this.$el.find('.rate')});
+      this.qualitySliderView = new QualitySliderView({model: this.model.get('settings'), el: this.$el.find('.quality')});
+      this.rateSliderView = new RateSliderView({model: this.model.get('settings'), el: this.$el.find('.rate')});
       this.sizeSliderView = new SizeSliderView({model: this.model, el: this.$el.find('.size')});
     }
 });
@@ -241,72 +301,16 @@ var MFAAppView = Backbone.View.extend({
     el: 'div#container',
     initialize: function() {
         this.model.on('restart', this.restartView, this);
+        this.model.get('timeline').on('add', this.imageAdded, this);
 
         this.timelineView = new TimelineView({model: this.model.get('timeline'), el: this.$el.find('div#inimglist')});
-        // todo create a settings model and restrict access to this view to that model
         this.settingsView = new SettingsView({model: this.model, el: this.$el.find('div.controls')});
         this.resultsView = new ResultsView({model: this.model, el: this.$el.find('#results')});
     },
     restartView: function() {
         $("body").removeClass("hasfiles");
+    },
+    imageAdded: function() {
+        $("body").addClass("hasfiles");
     }
 });
-
-// todo this should be integrated into the timeline view
-// http://www.html5rocks.com/en/tutorials/dnd/basics/#toc-examples
-function setupDrag() {
-
-  var container = $("#inimglist");
-  var dragSrcEl_ = null;
-
-  var handleDragStart = function(e) {
-    e.originalEvent.dataTransfer.effectAllowed = 'move';
-    e.originalEvent.dataTransfer.setData('text/html', this.innerHTML);
-    dragSrcEl_ = this;
-    $(this).addClass('moving');
-  };
-
-  var handleDragOver = function(e) {
-    if (e.originalEvent.preventDefault) {
-      e.originalEvent.preventDefault(); // Allows us to drop.
-    }
-  
-    e.originalEvent.dataTransfer.dropEffect = 'move';
-  };
-
-  var handleDragEnter = function(e) {
-    $(this).addClass('over');
-  };
-
-  var handleDragLeave = function(e) {
-    // this/e.target is previous target element.
-    $(this).removeClass('over');
-  };
-
-  var handleDrop = function(e) {
-  
-    if (e.originalEvent.stopPropagation) {
-      e.originalEvent.stopPropagation(); // stops the browser from redirecting.
-    }
-    
-    if (dragSrcEl_ != this) {
-       dragSrcEl_.innerHTML = this.innerHTML;
-       this.innerHTML = e.originalEvent.dataTransfer.getData('text/html');
-       // todo as soon as this is gone we don't need window.app to be global
-       window.app.swapImages($(dragSrcEl_).children().get(0), $(this).children().get(0));
-       handleDragEnd();
-    }
-    
-  };
-
-  var handleDragEnd = function() {
-    container.find(".col").removeClass("over moving");
-  };
-  
-  container.on("dragstart", ".col", handleDragStart);
-  container.on("dragenter", ".col", handleDragEnter);
-  container.on("dragover", ".col", handleDragOver);
-  container.on("dragleave", ".col", handleDragLeave);
-  container.on("drop", ".col", handleDrop);
-  container.on("dragend", ".col", handleDragEnd);
-}
