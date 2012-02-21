@@ -83,7 +83,7 @@ var DownloadButtonView = Backbone.View.extend({
 
                     var origin = e.origin || e.domain || e.uri;
                     if(origin !== "http://saveasbro.com") return;
-                    downloadLink('href', e.data);
+                    downloadLink.attr('href', e.data);
                     downloadLink.show();
                 };
 
