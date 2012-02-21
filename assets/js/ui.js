@@ -175,11 +175,12 @@ var TimelineView = Backbone.View.extend({
         this.$el.append("<div class='col error'>Error<div class='fil3l'></div></div>");
     },
     dragStart: function(e) {
-        e.originalEvent.dataTransfer.effectAllowed = 'move';
-        e.originalEvent.dataTransfer.setData('text/html', $(e.srcElement).html());
+        this.dragSrcEl_ = $(e.currentTarget);
 
-        $(e.srcElement).addClass('moving');
-        this.dragSrcEl_ = $(e.srcElement).parent();
+        e.originalEvent.dataTransfer.effectAllowed = 'move';
+        e.originalEvent.dataTransfer.setData('text/html', this.dragSrcEl_.html());
+
+        this.dragSrcEl_.addClass('moving');
     },
     dragOver: function(e) {
         if (e.originalEvent.preventDefault) {
@@ -188,22 +189,27 @@ var TimelineView = Backbone.View.extend({
         e.originalEvent.dataTransfer.dropEffect = 'move';
     },
     dragEnter: function(e) {
-        $(e.srcElement).addClass('over');
+        $(e.currentTarget).addClass('over');
     },
     dragLeave: function(e) {
-        $(e.srcElement).removeClass('over'); // this/e.target is previous target element.
+        $(e.currentTarget).removeClass('over'); // this/e.target is previous target element.
     },
     drop: function(e) {
         if (e.originalEvent.stopPropagation) {
             e.originalEvent.stopPropagation(); // stops the browser from redirecting.
         }
+        if (e.originalEvent.preventDefault) {
+            e.originalEvent.preventDefault(); // Allows us to drop.
+        }
     
-        var dropTarget = $(e.srcElement);
+        var dropTarget = $(e.currentTarget);
+        var swapTarget = this.dragSrcEl_;
+
         if (dropTarget.hasClass('col') && this.dragSrcEl_.html() != dropTarget.html()) {
-           this.dragSrcEl_.html(dropTarget.html());
+           swapTarget.html(dropTarget.html());
            dropTarget.html(e.originalEvent.dataTransfer.getData('text/html'));
 
-           this.model.swapImages(this.dragSrcEl_.children().get(0), dropTarget.children().get(0));
+           this.model.swapImages(swapTarget.children().first().get(0), dropTarget.children().first().get(0));
 
            this.dragEnd(null);
         }
