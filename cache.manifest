@@ -6,7 +6,7 @@ CACHE MANIFEST
 # https://github.com/paulirish/lazyweb-requests/issues/53
 #
 # Version Control
-# v1.1.4 02-18-2012
+# v1.1.4 02-21-2012
 #
 # Handy Dandy Developer Tools
 # CHROME chrome://appcache-internals 
@@ -39,23 +39,21 @@ assets/img/icons.png
 http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png
 assets/img/project_approved.png
 #
-# Github Assets
+# Github Buttons
 http://markdotto.github.com/github-buttons/github-icons.png
 http://markdotto.github.com/github-buttons/github-btn.html?user=h5bp&repo=mothereffinganimatedgif&type=fork&count=true
 http://markdotto.github.com/github-buttons/github-btn.html?user=paulirish&repo=lazyweb-requests&type=watch&count=true
 #
+# AppCache Status
+assets/js/cache.update.js
+# Network Status
+assets/js/network.status.js
 # jQuery Local
 assets/js/libraries/jquery-1.7.1.min.js
-# jQuery Rotate Compressed
-assets/js/libraries/jQueryRotateCompressed.js
 # jQuery base64
 assets/js/libraries/jquery.base64.min.js
-# AppCache Update Notifications
-assets/js/cache.update.js
-# Network Connection Notifications
-assets/js/network.status.js
-# Modernizr
-assets/js/libraries/modernizr.js
+# jQuery Rotate Compressed
+assets/js/libraries/jQueryRotateCompressed.js
 # LZWEncoder
 assets/js/libraries/LZWEncoder.js
 # NeuQuant
@@ -64,16 +62,27 @@ assets/js/libraries/NeuQuant.js
 assets/js/libraries/GIFEncoder.js
 # File Reader
 assets/js/libraries/filereader.js
+# Modernizr
+assets/js/libraries/modernizr.js
 # H5 Slider
 assets/js/libraries/html5slider.js
-# UI
-assets/js/ui.js
+# Underscore
+assets/js/libraries/underscore-min.js
+# Backbone
+assets/js/libraries/backbone-min.js
+# Backbone.nopersistence
+assets/js/libraries/backbone.nopersistence.js
 # Share
 assets/js/share.js
-#Mfanimated
+# MFanimated
 assets/js/mfanimated.js
-# Scripts
-assets/js/scripts.js
+# Models
+assets/js/models.js
+#
+# UI
+assets/js/ui.js
+# Startup
+assets/js/startup.js
 
 
 NETWORK:
@@ -83,19 +92,17 @@ http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 # Google Analytics
 http://www.google-analytics.com/ga.js
 #
-# Github API Calls
-# API repo callback
+# Github 
+# API calls
 https://api.github.com/repos/paulirish/lazyweb-requests?callback=callback
-# MEAG.gif repo callback
+# MEAG.gif
 https://api.github.com/repos/h5bp/mothereffinganimatedgif?callback=callback
 #
-# github icons(top-right) make this call
+# github icons topright make this call
 https://api.github.com:443
 #
 # post-messaged data always returns back anim gif
 http://saveasbro.com/gif
-#
-# Share.js call from script(script also contains an object with a key call)
-http://api.imgur.com/2/upload.json
+
 
 FALLBACK:
