@@ -48,20 +48,21 @@ var Timeline = Backbone.Collection.extend({
 var AnimationSettings = Backbone.Model.extend({
     defaults: {
            rate: 300,
-        quality: 10,
+        quality: 3,
       animHeight: 200,
-       animWidth: 200,
+       animWidth: 200
+    },
+    reset: function() {
+        this.set(this.defaults);
+        this.trigger('reset:rate reset:quality reset:animHeight reset:animWidth');
     },
     setRate: function(rate) {
-        this.set('animatedGIF', null);
         this.set('rate', rate);
     },
     setQuality: function(quality) {
-        this.set('animatedGIF', null);
         this.set('quality', quality);
     },
     setSize: function(height, width) {
-        this.set('animatedGIF', null);
         this.set('animHeight', height);
         this.set('animWidth', width);
     }
@@ -73,6 +74,8 @@ var MFAApp = Backbone.Model.extend({
     },
     initialize: function() {
         this.set('settings', new AnimationSettings());
+        this.get('settings').on('change:rate change:quality change:animHeight change:animWidth', function() { this.set('animatedGIF', null); }, this);
+
         this.set('timeline', new Timeline());
     },
     restart: function() {
@@ -80,6 +83,8 @@ var MFAApp = Backbone.Model.extend({
         this.get('timeline').trigger('restart');
 
         this.set(this.defaults);
+        this.get('settings').reset();
+
         this.trigger('restart');
     },
     getRawImages: function() {

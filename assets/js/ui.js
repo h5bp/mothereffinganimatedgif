@@ -221,6 +221,8 @@ var QualitySliderView = Backbone.View.extend({
     },
     initialize: function() {
         this.model.on('change:quality', this.render, this);
+        this.model.on('reset:quality', function() { this.$el.find('input').val(this.model.get('quality')); }, this);
+
 		    this.model.setQuality(this.$el.find('input').val());
     },
     setQuality: function(e) {
@@ -238,6 +240,8 @@ var RateSliderView = Backbone.View.extend({
     },
     initialize: function() {
         this.model.on('change:rate', this.render, this);
+        this.model.on('reset:rate', function() { this.$el.find('input').val(this.model.get('rate')); }, this);
+
 		    this.model.setRate(this.$el.find('input').val());
     },
     setRate: function(e) {
@@ -265,6 +269,7 @@ var SizeSliderView = Backbone.View.extend({
     },
     initialize: function() {
         this.model.get('settings').on('change:animWidth change:animHeight', this.render, this);
+        this.model.get('settings').on('reset:animWidth reset:animHeight', function() { this.$el.find('input').val(this.model.get('animWidth')); }, this);
 
         // After an image has been added to the timeline we need to know the size
         var self = this;
