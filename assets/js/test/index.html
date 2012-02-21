@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Jasmine Spec Runner</title>
+
+  <link rel="shortcut icon" type="image/png" href="jasmine/jasmine_favicon.png">
+
+  <link rel="stylesheet" type="text/css" href="jasmine/jasmine.css">
+  <script type="text/javascript" src="jasmine/jasmine.js"></script>
+  <script type="text/javascript" src="jasmine/jasmine-html.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="AppSpec.js"></script>
+
+
+  <!-- include source files here... -->
+
+  <script src="../libraries/jquery-1.7.1.min.js"></script>
+  <script src="../libraries/jquery.base64.min.js"></script>
+  <script src="../libraries/jQueryRotateCompressed.js"></script>
+  <script src="../libraries/LZWEncoder.js"></script>
+  <script src="../libraries/NeuQuant.js"></script>
+  <script src="../libraries/GIFEncoder.js"></script>
+  <script src="../libraries/filereader.js"></script>
+  <script src="../libraries/modernizr.js"></script>
+  <script src="../libraries/html5slider.js"></script>
+  <script src="../libraries/underscore-min.js"></script>
+  <script src="../libraries/backbone-min.js"></script>
+  <script src="../libraries/backbone.nopersistence.js"></script>
+  <script src="../share.js"></script>
+  <script src="../mfanimated.js"></script>
+  <script src="../models.js"></script>
+  <script src="../ui.js"></script>
+  <script src="../startup.js"></script>
+
+  <script type="text/javascript">
+    (function() {
+      var jasmineEnv = jasmine.getEnv();
+      jasmineEnv.updateInterval = 1000;
+
+      var trivialReporter = new jasmine.TrivialReporter();
+
+      jasmineEnv.addReporter(trivialReporter);
+
+      jasmineEnv.specFilter = function(spec) {
+        return trivialReporter.specFilter(spec);
+      };
+
+      var currentWindowOnload = window.onload;
+
+      window.onload = function() {
+        if (currentWindowOnload) {
+          currentWindowOnload();
+        }
+        execJasmine();
+      };
+
+      function execJasmine() {
+        jasmineEnv.execute();
+      }
+
+    })();
+  </script>
+
+</head>
+
+<body>
+</body>
+</html>

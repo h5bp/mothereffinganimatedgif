@@ -29,7 +29,7 @@ var MFAnimatedGIF = function(opts) {
         canvas.width  = opts.width;
         canvas.height = opts.height;
         encoder.setSize(opts.width, opts.height);
-        encoder.setQuality(App.maxQuality + 1 - (App.maxQuality * (opts.quality / 10)));
+        encoder.setQuality(21 - (20 * (opts.quality / 10)));
 
         encoder.start();
 
