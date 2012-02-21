@@ -5,12 +5,12 @@ ShareGIFWith.imgur = function(imageData, imageName, imageTitle, imageCaption, su
       url: 'http://api.imgur.com/2/upload.json',
       type: 'POST',
       data: {
-          type: 'base64',
-          key: 'b0b751fa5073aed697e0919602ce506d',
-          name: imageName,
-          title: imageTitle,
+          type   : 'base64',
+          key    : 'b0b751fa5073aed697e0919602ce506d',
+          name   : imageName,
+          title  : imageTitle,
           caption: imageCaption,
-          image: imageData
+          image  : imageData
       },
       dataType: 'json'
   }).success(function(data) {
