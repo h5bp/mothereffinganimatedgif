@@ -1,6 +1,6 @@
 <!doctype html>
 
-<!-- eventually add manifest="/cache.manifest" to the HTML tag -->
+<!-- eventually add manifest="cache.manifest" to the HTML tag -->
 
 <!--[if lte IE 8]><html class="no-js oldie shitty shit" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
@@ -32,6 +32,30 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
     
+    <!-- 
+    	Special thanks to Jon Hicks for these "iconic" studies.  
+    	Its considered best practice to reference favicons.
+    	
+    	Linking to the apple-touch-icons allows other apps and 
+    	platforms to use the icon (such as Android). Place the 
+    	Opera Speed Dial image first in the list, to avoid it 
+    	appearing as the favicon.
+    	
+    	http://iconhandbook.co.uk/reference/chart
+    	http://iconhandbook.co.uk/reference/examples/favicons
+    -->
+    <!-- Opera Speed Dial Favicon -->
+    <link rel="icon" type="image/png" href="/speeddial-160px.png" />
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- For iPhone 4 Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+    <!-- For iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+    <!-- For iPhone: -->
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png">
+    
+    <!-- style sheets -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,800|Alfa+Slab+One|Patua+One" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     
