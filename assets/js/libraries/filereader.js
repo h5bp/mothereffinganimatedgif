@@ -61,7 +61,7 @@ See http://github.com/bgrins/filereader.js for documentation
     }
 
     function setupClipboard(element, opts) {
-        if (!FileReaderJS.enabled) {
+        if (!FileReaderJS.enabled || !element) {
             return;
         }
 
@@ -109,7 +109,7 @@ See http://github.com/bgrins/filereader.js for documentation
 
     // setupDrop: bind the 'drop' event for a DOM element
     function setupDrop(dropbox, opts) {
-        if (!FileReaderJS.enabled) {
+        if (!FileReaderJS.enabled || !dropbox) {
             return;
         }
 
