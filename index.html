@@ -1,9 +1,9 @@
 <!doctype html>
 
-<!-- eventually add manifest="/cache.manifest" to the HTML tag -->
+<!-- eventually add manifest="cache.manifest" to the HTML tag -->
 
 <!--[if lte IE 8]><html class="no-js oldie shitty shit" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" manifest="cache.manifest"><!--<![endif]-->
 <head>
     
 <!-- 
@@ -32,14 +32,39 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
     
+    <!-- 
+    	Special thanks to Jon Hicks for these "iconic" studies.  
+    	Its considered best practice to reference favicons.
+    	
+    	Linking to the apple-touch-icons allows other apps and 
+    	platforms to use the icon (such as Android). Place the 
+    	Opera Speed Dial image first in the list, to avoid it 
+    	appearing as the favicon.
+    	
+    	http://iconhandbook.co.uk/reference/chart
+    	http://iconhandbook.co.uk/reference/examples/favicons
+    -->
+    <!-- Opera Speed Dial Favicon -->
+    <link rel="icon" type="image/png" href="/speeddial-160px.png" />
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- For iPhone 4 Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+    <!-- For iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+    <!-- For iPhone: -->
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png">
+    
+    <!-- style sheets -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,800|Alfa+Slab+One|Patua+One" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     
     <!-- cache & network update notification -->
     <!-- http://blog.grayghostvisuals.com/html/cache-manifest-with-wordpress-and-typekit-->
     <!-- UNCOMMENT TO GET GOING WITH YOUR MANIFEST -->
-    <!--<script src="assets/js/cache.update.js"></script>-->
-    <!--<script src="assets/js/network.status.js"></script>-->
+    <script src="assets/js/cache.update.js"></script>
+    <script src="assets/js/network.status.js"></script>
+
 
 </head>
 <body>
@@ -51,7 +76,7 @@
                 <img src="assets/img/logo.gif" alt="">
           </span>
         	
-          <h1>Mothereffinganimatedgif</h1>
+      <h1>Mothereffinganimatedgif</h1>
         	<p>Drag + Drop, Client-side, Animated GIF Creator</p>
 
           <ul class="social">
@@ -103,7 +128,7 @@
         </div>
 
         <footer id="footer" role="contentinfo">
-              <div id="html5-badge"><a href="http://www.w3.org/html/logo/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage"></a>
+              <div id="html5-badge"><a href="http://www.w3.org/html/logo"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage"></a>
               </div>
               <p>
                 Made by the crew behind <a href="https://github.com/paulirish/lazyweb-requests/issues/53">lazyweb-requests#53</a>
@@ -131,10 +156,10 @@
     <script src="assets/js/startup.js"></script>
 
   <script>
-    var _gaq=[['_setAccount','UA-18857974-3'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
+    //var _gaq=[['_setAccount','UA-18857974-3'],['_trackPageview']];
+    //(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    //g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    //s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 
 </body>
