@@ -14,6 +14,9 @@ var TimelineImage = Backbone.Model.extend({
         });
 
         this.get('originalImage').src = src;
+    },
+    getSrc: function() {
+        return this.get('originalImage').src;
     }
 });
 
@@ -42,15 +45,37 @@ var Timeline = Backbone.Collection.extend({
     },
 });
 
-var MFAApp = Backbone.Model.extend({
+var AnimationSettings = Backbone.Model.extend({
     defaults: {
            rate: 300,
-        quality: 10,
+        quality: 3,
       animHeight: 200,
-       animWidth: 200,
+       animWidth: 200
+    },
+    reset: function() {
+        this.set(this.defaults);
+        this.trigger('reset:rate reset:quality reset:animHeight reset:animWidth');
+    },
+    setRate: function(rate) {
+        this.set('rate', rate);
+    },
+    setQuality: function(quality) {
+        this.set('quality', quality);
+    },
+    setSize: function(height, width) {
+        this.set('animHeight', height);
+        this.set('animWidth', width);
+    }
+});
+
+var MFAApp = Backbone.Model.extend({
+    defaults: {
        animatedGIF: null
     },
     initialize: function() {
+        this.set('settings', new AnimationSettings());
+        this.get('settings').on('change:rate change:quality change:animHeight change:animWidth', function() { this.set('animatedGIF', null); }, this);
+
         this.set('timeline', new Timeline());
     },
     restart: function() {
@@ -58,6 +83,8 @@ var MFAApp = Backbone.Model.extend({
         this.get('timeline').trigger('restart');
 
         this.set(this.defaults);
+        this.get('settings').reset();
+
         this.trigger('restart');
     },
     getRawImages: function() {
@@ -70,32 +97,22 @@ var MFAApp = Backbone.Model.extend({
         this.set('animatedGIF', null);
         this.get('timeline').swapImages(firstImage, secondImage);
     },
-    setRate: function(rate) {
-        this.set('animatedGIF', null);
-        this.set('rate', rate);
-    },
-    setQuality: function(quality) {
-        this.set('animatedGIF', null);
-        this.set('quality', quality);
-    },
-    setSize: function(height, width) {
-        this.set('animatedGIF', null);
-        this.set('animHeight', height);
-        this.set('animWidth', width);
-    },
-    getAnimatedGIF: function() {
+    generateAnimatedGIF: function() {
         if(this.get('animatedGIF') === null) {
             this.set('animatedGIF', new MFAnimatedGIF({
                 images: this.getRawImages(),
                 rotations: this.getRotations(),
-                delay : this.get('rate'),
-                quality : this.get('quality'),
+                delay : this.get('settings').get('rate'),
+                quality : this.get('settings').get('quality'),
                 repeat: 0,
-                height: this.get('animHeight'),
-                width : this.get('animWidth')
+                height: this.get('settings').get('animHeight'),
+                width : this.get('settings').get('animWidth')
             }));
         }
         this.trigger('animationGenerated', this.get('animatedGIF'));
+    },
+    getAnimatedGIF: function() {
+        this.generateAnimatedGIF();
         return this.get('animatedGIF');
     }
 });
