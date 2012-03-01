@@ -36,9 +36,11 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     
     <!-- cache & network update notification -->
+    <!-- http://blog.grayghostvisuals.com/html/cache-manifest-with-wordpress-and-typekit-->
     <!-- UNCOMMENT TO GET GOING WITH YOUR MANIFEST -->
     <script src="assets/js/cache.update.js"></script>
     <script src="assets/js/network.status.js"></script>
+
 
 </head>
 <body>
@@ -48,18 +50,15 @@
         <header id="header" role="header" class="clearfix">
         	<span class="image">
                 <img src="assets/img/logo.gif" alt="">
-            </span>
+          </span>
         	
-        <h1>Mothereffinganimatedgif</h1>
+      <h1>Mothereffinganimatedgif</h1>
         	<p>Drag + Drop, Client-side, Animated GIF Creator</p>
 
-            <ul class="social">
-              <li><iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=h5bp&repo=mothereffinganimatedgif&type=fork&count=true"
-allowtransparency="true" frameborder="0" scrolling="0" width="62px" height="20px"></iframe>
-              <li><iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=paulirish&repo=lazyweb-requests&type=watch&count=true"
-allowtransparency="true" frameborder="0" scrolling="0" width="132px" height="20px"></iframe></li>
+          <ul class="social">
+              <li><iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=h5bp&repo=mothereffinganimatedgif&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="62px" height="20px"></iframe>
+              <li><iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=paulirish&repo=lazyweb-requests&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="132px" height="20px"></iframe></li>
           </ul>
-
         </header>
 
         <div id="main" role="main">
@@ -68,20 +67,19 @@ allowtransparency="true" frameborder="0" scrolling="0" width="132px" height="20p
 		        	<div id="inimglist" class="clearfix"></div>
 	        	</div>
 	        	<div class="controls">
-                    
-                    <span class="size">
-                        <label>Width:</label>
-                        <input type=range max=100 min=1 value=100> <output></output>
-                    </span>
-                    <span class="rate">
-                        <label>Frame Delay:</label>
-                        <input type=range max=100 min=1 value=50> <output></output>
-                    </span>
-                    <span class="quality">
-                        <label>Quality:</label>
-                        <input type=range max=10 min=1 value=3> <output></output>
-                    </span>
-	        		<a href="#" class="clear">Clear</a>
+                <span class="size">
+                    <label>Width:</label>
+                    <input type=range max=100 min=1 value=100> <output></output>
+                </span>
+                <span class="rate">
+                    <label>Frame Delay:</label>
+                    <input type=range max=600 min=1 value=300> <output></output>
+                </span>
+                <span class="quality">
+                    <label>Quality:</label>
+                    <input type=range max=10 min=1 value=3> <output></output>
+                </span>
+	        		  <a href="#" class="clear">Clear</a>
 	        	</div>
 	        </div>
         </div>
@@ -92,9 +90,17 @@ allowtransparency="true" frameborder="0" scrolling="0" width="132px" height="20p
         </div>
         
         <div id='results'>
-        	<h2 class='onlyfiles'><button class='play'>Animate</button> <button class="clear">Reset</button> <a id="downloadlink" href="">Download GIF</a></h2>
-            <img id="animresult"/>
+        	<h2 class='onlyfiles'>
+            
+            <button class='play'>Animate</button> 
+            <button class='clear'>Reset</button> 
+            
+            <a id="downloadlink" href="">Download GIF</a>
+            <a id="sharelink" href="">Post to imgur</a>
 
+          </h2>
+
+          <img id="animresult"/>
         </div>
 
         <footer id="footer" role="contentinfo">
@@ -116,8 +122,14 @@ allowtransparency="true" frameborder="0" scrolling="0" width="132px" height="20p
     <script src="assets/js/libraries/filereader.js"></script>
     <script src="assets/js/libraries/modernizr.js"></script>
     <script src="assets/js/libraries/html5slider.js"></script>
+    <script src="assets/js/libraries/underscore-min.js"></script>
+    <script src="assets/js/libraries/backbone-min.js"></script>
+    <script src="assets/js/libraries/backbone.nopersistence.js"></script>
+    <script src="assets/js/share.js"></script>
+    <script src="assets/js/mfanimated.js"></script>
+    <script src="assets/js/models.js"></script>
     <script src="assets/js/ui.js"></script>
-    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/startup.js"></script>
 
   <script>
     //var _gaq=[['_setAccount','UA-18857974-3'],['_trackPageview']];
