@@ -1,13 +1,10 @@
 <!doctype html>
 
-<!-- eventually add manifest="/cache.manifest" to the HTML tag -->
-
 <!--[if lte IE 8]><html class="no-js oldie shitty shit" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" manifest="cache.manifest" lang="en"><!--<![endif]-->
 <head>
     
 <!-- 
-
     OMG thanks for viewing the source.         
     You're awesome.
 
@@ -20,7 +17,6 @@
  <__.|_|-|_|      * { box-sizing : border-box; }
 
     See the header and footer for github links and the people involved! ♥
-
 -->
 
     <meta charset="utf-8">
@@ -36,22 +32,22 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     
     <!-- cache & network update notification -->
-    <!-- http://blog.grayghostvisuals.com/html/cache-manifest-with-wordpress-and-typekit-->
-    <!-- UNCOMMENT TO GET GOING WITH YOUR MANIFEST -->
-    <!--<script src="assets/js/cache.update.js"></script>-->
-    <!--<script src="assets/js/network.status.js"></script>-->
+    <!-- http://blog.grayghostvisuals.com/html/cache-manifest-with-wordpress-and-typekit -->
+    <script src="assets/js/cache.update.js"></script>
+    <script src="assets/js/network.status.js"></script>
 
 </head>
 <body>
-    <img src="assets/img/project_approved.png" alt="Speed Project Approved" id="speedProject">
+    <img src="assets/img/project_approved.png" alt="This animated gif maker has been speed project tested and approved" id="speedProject">
     <div id="container">
         
         <header id="header" role="header" class="clearfix">
-        	<span class="image">
+          <span class="image">
                 <img src="assets/img/logo.gif" alt="">
           </span>
         	
           <h1>Mothereffinganimatedgif</h1>
+          
         	<p>Drag + Drop, Client-side, Animated GIF Creator</p>
 
           <ul class="social">
@@ -68,15 +64,15 @@
 	        	<div class="controls">
                 <span class="size">
                     <label>Width:</label>
-                    <input type=range max=100 min=1 value=100> <output></output>
+                    <input type=range max=100 min=1 value=100><output></output>
                 </span>
                 <span class="rate">
                     <label>Frame Delay:</label>
-                    <input type=range max=600 min=1 value=300> <output></output>
+                    <input type=range max=600 min=1 value=300><output></output>
                 </span>
                 <span class="quality">
                     <label>Quality:</label>
-                    <input type=range max=10 min=1 value=3> <output></output>
+                    <input type=range max=10 min=1 value=3><output></output>
                 </span>
 	        		  <a href="#" class="clear">Clear</a>
 	        	</div>
@@ -98,16 +94,16 @@
             <a id="sharelink" href="">Post to imgur</a>
 
           </h2>
-
+          
           <img id="animresult"/>
         </div>
 
         <footer id="footer" role="contentinfo">
-              <div id="html5-badge"><a href="http://www.w3.org/html/logo/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage"></a>
+              <div id="html5-badge">
+              	<a href="http://www.w3.org/html/logo/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage"></a>
               </div>
-              <p>
-                Made by the crew behind <a href="https://github.com/paulirish/lazyweb-requests/issues/53">lazyweb-requests#53</a>
-              </p>
+              
+              <p>Made by the crew behind <a href="https://github.com/paulirish/lazyweb-requests/issues/53">lazyweb-requests#53</a></p>
         </footer>
     </div>
 

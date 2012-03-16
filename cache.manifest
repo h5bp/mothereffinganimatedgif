@@ -6,7 +6,7 @@ CACHE MANIFEST
 # https://github.com/paulirish/lazyweb-requests/issues/53
 #
 # Version Control
-# v1.1.5 03-01-2012
+# v1.1.6 03-16-2012
 #
 # Handy Dandy Developer Tools
 # CHROME chrome://appcache-internals 
@@ -90,9 +90,6 @@ assets/js/share.js
 assets/js/mfanimated.js
 # Models
 assets/js/models.js
-#
-# UI
-assets/js/ui.js
 # Startup
 assets/js/startup.js
 
@@ -101,23 +98,12 @@ NETWORK:
 # jQuery CDN
 http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 #
-# Analytics - still buggy
-# https://www.google-analytics.com/ga.js
-#
-# mothereffinganimatedgif - still buggy
+# Github API
 https://api.github.com/repos/h5bp/mothereffinganimatedgif?callback=callback
-#
-# Github API - still buggy
 https://api.github.com/repos/paulirish/lazyweb-requests?callback=callback
 #
 # Google Analytics
 http://www.google-analytics.com/ga.js
-#
-# Github 
-# API calls
-https://api.github.com/repos/paulirish/lazyweb-requests?callback=callback
-# MEAG.gif
-https://api.github.com/repos/h5bp/mothereffinganimatedgif?callback=callback
 #
 # github icons topright make this call
 https://api.github.com:443
