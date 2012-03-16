@@ -1,9 +1,7 @@
 <!doctype html>
 
-<!-- eventually add manifest="/cache.manifest" to the HTML tag -->
-
 <!--[if lte IE 8]><html class="no-js oldie shitty shit" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" manifest="cache.manifest" lang="en"><!--<![endif]-->
 <head>
     
 <!-- 
@@ -37,9 +35,8 @@
     
     <!-- cache & network update notification -->
     <!-- http://blog.grayghostvisuals.com/html/cache-manifest-with-wordpress-and-typekit-->
-    <!-- UNCOMMENT TO GET GOING WITH YOUR MANIFEST -->
-    <!--<script src="assets/js/cache.update.js"></script>-->
-    <!--<script src="assets/js/network.status.js"></script>-->
+    <script src="assets/js/cache.update.js"></script>
+    <script src="assets/js/network.status.js"></script>
 
 </head>
 <body>
