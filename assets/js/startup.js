@@ -23,7 +23,7 @@ var support = FileReaderJS.enabled && Modernizr.draganddrop &&
 if (!support) {
     $("body").addClass("disabled");
     var caniscript = document.createElement('script');
-    caniscript.src = 'http://sandbox.thewikies.com/caniuse/json+filereader+draganddrop+querySelector+postmessage.html?callback=canicallback';
+    caniscript.src = 'http://api.html5please.com/json+filereader+draganddrop+querySelector+postmessage.json?callback=canicallback&texticon&html&readable';
     document.body.appendChild(caniscript);
 } else {
 
