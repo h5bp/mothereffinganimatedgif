@@ -35,12 +35,15 @@ window.addEventListener("load", function() {
      sendLocalStatus();
    }
 }, true);
- 
-window.addEventListener("offline", function() {
-  alert("You're Offline Amigo! If you update your status, it will be sent when you go back online");
-}, true);
 
-window.addEventListener("online", function() {
-  sendLocalStatus();
-  alert('You\'re online again Amigo. Welcome back to the cloud');
-}, true);
+// Commenting out event listeners to avoid notifications when online and offline
+// Uncomment if you would like these notifications activated
+//
+//window.addEventListener("offline", function() {
+  //alert("You're Offline Amigo! If you update your status, it will be sent when you go back online");
+//}, true);
+//
+//window.addEventListener("online", function() {
+  //sendLocalStatus();
+  //alert('You\'re online again Amigo. Welcome back to the cloud');
+//}, true);
