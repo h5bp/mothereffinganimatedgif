@@ -3,17 +3,17 @@
 <!--[if lte IE 8]><html class="no-js oldie shitty shit" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" manifest="cache.manifest" lang="en"><!--<![endif]-->
 <head>
-    
-<!-- 
-    OMG thanks for viewing the source.         
+
+<!--
+    OMG thanks for viewing the source.
     You're awesome.
 
-                 Tech we used to build this: 
+                 Tech we used to build this:
 
-             __   HTML5 drag n drop, FileReader, 
-            / _)  a[download], GIF encoding on the client, BlobBuilder, 
-     .-^^^-/ /    postMessage, <input type=range> (with Firefox polyfill), 
- __/       /      appcache, transforms, transitions,  
+             __   HTML5 drag n drop, FileReader,
+            / _)  a[download], GIF encoding on the client, BlobBuilder,
+     .-^^^-/ /    postMessage, <input type=range> (with Firefox polyfill),
+ __/       /      appcache, transforms, transitions,
  <__.|_|-|_|      * { box-sizing : border-box; }
 
     See the header and footer for github links and the people involved! ♥
@@ -21,16 +21,16 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
+
     <title>Mothereffing animated gif</title>
-    
+
     <meta name="description" content="Drag and drop images from your desktop into the app. You can rotate and drag them. And generate your animated GIF! May even work while you're disconnected!">
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    
+
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,800|Alfa+Slab+One|Patua+One" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
-    
+
     <!-- cache & network update notification -->
     <!-- http://blog.grayghostvisuals.com/html/cache-manifest-with-wordpress-and-typekit -->
 
@@ -41,14 +41,14 @@
 <body>
     <img src="assets/img/project_approved.png" alt="This animated gif maker has been speed project tested and approved" id="speedProject">
     <div id="container">
-        
+
         <header id="header" role="header" class="clearfix">
           <span class="image">
                 <img src="assets/img/logo.gif" alt="">
           </span>
-        	
+
           <h1>Mothereffinganimatedgif</h1>
-          
+
         	<p>Drag + Drop, Client-side, Animated GIF Creator</p>
 
           <ul class="social">
@@ -79,23 +79,23 @@
 	        	</div>
 	        </div>
         </div>
-        
+
         <div id="dropArea">
         	<h2 class='support'><span>Drag and <em>Drop</em> images here</span></h2>
         	<h2 class='nosupport'>Your browser doesn't support FileReader, Drag and Drop, or some other modern required features. :(</h2>
         </div>
-        
+
         <div id='results'>
         	<h2 class='onlyfiles'>
-            
-            <button class='play'>Animate</button> 
-            <button class='clear'>Reset</button> 
-            
+
+            <button class='play'>Animate</button>
+            <button class='clear'>Reset</button>
+
             <a id="downloadlink" href="">Download GIF</a>
             <a id="sharelink" href="">Post to imgur</a>
 
           </h2>
-          
+
           <img id="animresult"/>
         </div>
 
@@ -103,10 +103,12 @@
               <div id="html5-badge">
               	<a href="http://www.w3.org/html/logo/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, Semantics, and Offline &amp; Storage"></a>
               </div>
-              
+
               <p>Made by the crew behind <a href="https://github.com/paulirish/lazyweb-requests/issues/53">lazyweb-requests#53</a></p>
         </footer>
     </div>
+
+
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="assets/js/libraries/jquery-1.7.1.min.js"><\/script>')</script>
