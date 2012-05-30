@@ -56,7 +56,7 @@ http://markdotto.github.com/github-buttons/github-btn.html?user=paulirish&repo=l
 # AppCache Status
 assets/js/cache.update.js
 # Network Status
-assets/js/network.status.js
+# assets/js/network.status.js
 # jQuery Local
 assets/js/libraries/jquery-1.7.1.min.js
 # jQuery base64
