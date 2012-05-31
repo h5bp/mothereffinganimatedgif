@@ -300,6 +300,7 @@ header .image img {
     position: relative;
     z-index: 300;
 }
+header h1:before {  content: "supersweetanimatedgif"; color:white;   text-shadow: 0 2px 0 #000, 2px 0 0 #000;}
 header h1 {
     font-family: 'Patua One', sans-serif;
     margin: 0;
@@ -312,6 +313,7 @@ header h1 {
     line-height: 18px;
     display: block;
     float: left;
+color: transparent; text-shadow: none;
 }
 header p, footer p {
     display: block;
