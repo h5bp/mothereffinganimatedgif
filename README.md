@@ -1,14 +1,18 @@
-#mothereffinganimatedgif
+#MOTHEREFFINGANIMATEDGIF
+##Drag + Drop, Client-side, Animated GIF Creator
 
-Drag + Drop, Client-side, Animated GIF Creator
+This is an [H5BP](http://h5bp.github.com) community project. [H5BP](http://h5bp.github.com) is where you'll find a bunch of people creating open source software. 
+[Fork](http://h5bp.github.com) a project and get involved!
 
+File tickets &rarr; [here](https://github.com/h5bp/mothereffinganimatedgif/issues) if you want something changed or better yet, just change it yo'self!
 
-This is a community project. Please fork and contribute! File tickets here if you want something changed. (Better yet just change it yo'self!)
-
-![](https://a248.e.akamai.net/assets.github.com/img/95f17295895ebfe60821b90ba0ac417ddf5ecce1/687474703a2f2f7061756c69726973682e636f6d2f692f6d6561672e6a7067)
+[![mothereffinganimatedgif](http://grayghostvisuals.com/h5bp/meag.png)](http://mothereffinganimatedgif.com)
 
 Conceived of, designed, developed and LAUNCHED within 24 hours.
+Made by the crew behind [lazy web request #53](https://github.com/h5bp/lazyweb-requests/issues/53). 
+
+Take it for a test spin &rarr; [http://mothereffinganimatedgif.com](http://mothereffinganimatedgif.com)
 
 ![24 hr speed project](http://mothereffinganimatedgif.com/assets/img/project_approved.png)
 
-(probably unconsciously inspired by @maxogden's [kathyleegiffer](https://github.com/maxogden/kathyleegiffer))
+probably unconsciously inspired by &rarr; @maxogden's [kathyleegiffer](https://github.com/maxogden/kathyleegiffer)
