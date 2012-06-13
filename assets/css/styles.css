@@ -2,9 +2,9 @@
 /*     Normalize
 /*************************************************************/
 * {
-    -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
 }
 article,
 aside,
@@ -29,7 +29,7 @@ html {
     font-size: 100%;
     overflow-y: scroll;
     -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
 }
 body {
     margin: 0;
@@ -172,9 +172,9 @@ input[type="checkbox"],
 input[type="radio"] { box-sizing: border-box }
 input[type="search"] {
     -webkit-appearance: textfield;
-    -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box;
-    box-sizing: content-box;
+       -moz-box-sizing: content-box;
+            box-sizing: content-box;
 }
 input[type="search"]::-webkit-search-decoration { -webkit-appearance: none }
 button::-moz-focus-inner,
@@ -208,17 +208,20 @@ td { vertical-align: top }
     right: 270px;
     width: 40px;
     -webkit-transition: all linear .25s;
-    -moz-transition: all linear .25s;
-    -ms-transition: all linear .25s;
-    transition: all linear .25s;
+       -moz-transition: all linear .25s;
+         -o-transition: all linear .25s;
+        -ms-transition: all linear .25s;
+            transition: all linear .25s;
 }
 
 #speedProject:hover {
     width: 125px;
     right: 240px;
     -webkit-transform: rotate(35deg);
-    -moz-transform: rotate(35deg);
-    transform: rotate(35deg);
+       -moz-transform: rotate(35deg);
+         -o-transform: rotate(35deg);
+        -ms-transform: rotate(35deg);
+            transform: rotate(35deg);
 }
 
 /*************************************************************/
@@ -240,9 +243,10 @@ body.disabled .nosupport { display: block }
     position: relative;
     top: -300px;
     -webkit-transition: top linear .1s;
-    -moz-transition: top linear .1s;
-    -ms-transition: top linear .1s;
-    transition: top linear .1s;
+       -moz-transition: top linear .1s;
+         -o-transition: top linear .1s;
+        -ms-transition: top linear .1s;
+            transition: top linear .1s;
 }
 
 /*************************************************************/
@@ -286,8 +290,10 @@ header .image:after {
     left: 0;
     z-index: 200;
     -webkit-transform: rotate(10deg);
-    -moz-transform: rotate(10deg);
-    transform: rotate(10deg);
+       -moz-transform: rotate(10deg);
+         -o-transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+            transform: rotate(10deg);
 }
 header .image img {
     height: 24px;
@@ -295,13 +301,20 @@ header .image img {
     border: 2px solid #fff;
     box-shadow: 0 1px 0 #000;
     -webkit-transform: rotate(-10deg);
-    -moz-transform: rotate(-10deg);
-    transform: rotate(-10deg);
+       -moz-transform: rotate(-10deg);
+         -o-transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+            transform: rotate(-10deg);
     position: relative;
     z-index: 300;
 }
-header h1:before {  content: "supersweetanimatedgif"; color:white;   text-shadow: 0 2px 0 #000, 2px 0 0 #000;}
+header h1:before {  
+    content: "mothereffinganimatedgif"; 
+    color:white; 
+    text-shadow: 0 2px 0 #000, 2px 0 0 #000;
+}
 header h1 {
+    color: transparent; 
     font-family: 'Patua One', sans-serif;
     margin: 0;
     padding: 20px 0 0 20px;
@@ -313,7 +326,7 @@ header h1 {
     line-height: 18px;
     display: block;
     float: left;
-color: transparent; text-shadow: none;
+    text-shadow: none;
 }
 header p, footer p {
     display: block;
@@ -331,10 +344,10 @@ header p, footer p {
     border-bottom: 1px solid rgba(0,0,0,0.35);
     background: rgba(0,0,0,0.25);
     background-image: -webkit-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
-    background-image: -moz-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
-    background-image: -ms-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
-    background-image: -o-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
-    background-image: linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:    -moz-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:     -ms-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:      -o-linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:         linear-gradient(botttom, rgba(0,0,0,0), rgba(0,0,0,0.2));
 }
 footer p {
     padding-top: 0;
@@ -360,10 +373,10 @@ header .social li {
 #main .top .files {
     display: block;
     background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
-    background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
-    background-image: -ms-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
-    background-image: -o-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
-    background-image: linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
+    background-image:    -moz-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
+    background-image:     -ms-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
+    background-image:      -o-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
+    background-image:         linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
     margin: 0;
     position: relative;
     overflow: hidden;
@@ -415,8 +428,10 @@ header .social li {
 }
 #main .top .files .col.moving {
     -webkit-transform: scale(0.8);
-    -moz-transform: scale(0.8);
-    -ms-transform: scale(0.8);
+       -moz-transform: scale(0.8);
+         -o-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+            transform: scale(0.8);
     background: white;
     opacity: .8;
 }
@@ -442,10 +457,10 @@ header .social li {
     font-size: 11px;
     letter-spacing: 1px;
     background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
-    background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
-    background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
-    background-image: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
-    background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:    -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:     -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:      -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:         linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
     overflow: hidden;
 }
 #main .top .controls a {
@@ -512,10 +527,10 @@ header .social li {
     display: block;
     background: rgba(255, 255, 255, 0.8);
     background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
-    background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
-    background-image: -ms-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
-    background-image: -o-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
-    background-image: linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image:    -moz-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image:     -ms-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image:      -o-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image:         linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
     text-align: center;
     box-shadow: 0 1px 0 #fff, 0 -1px 0 rgba(0,0,0,0.1), 0 -2px 0 rgba(255,255,255,0.5);
     text-shadow: 0 1px 0 white;
@@ -554,10 +569,10 @@ header .social li {
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
     background: rgba(255, 255, 255, 0.8);
     background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
-    background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
-    background-image: -ms-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
-    background-image: -o-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
-    background-image: linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
+    background-image:    -moz-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
+    background-image:     -ms-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
+    background-image:      -o-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
+    background-image:         linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
 }
 
 .onlyfiles .play:before,
@@ -704,16 +719,6 @@ footer a:link, footer a:visited {
 .clearfix:after { clear: both }
 .clearfix { zoom: 1 }
 
-/*************************************************************/
-/*  Media Queries
-/*************************************************************/
-
-@media only screen and (min-width: 480px) {
-
-}
-@media only screen and (min-width: 768px) {
-
-}
 
 /*************************************************************/
 /*  Print
