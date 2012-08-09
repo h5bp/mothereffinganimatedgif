@@ -6,7 +6,7 @@ CACHE MANIFEST
 # https://github.com/paulirish/lazyweb-requests/issues/53
 #
 # Version Control
-# v1.1.6 03-16-2012
+# v1.1.7 08-09-2012
 #
 # Handy Dandy Developer Tools
 # CHROME chrome://appcache-internals
@@ -35,11 +35,9 @@ assets/img/logo.gif
 assets/img/bg-linen.jpg
 assets/img/garbage.png
 assets/img/arrow.png
-http://markdotto.github.com/github-buttons/github-icons.png
+assets/img/gh-icons.png
 http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png
 assets/img/project_approved.png
-#
-# Github Buttons
 assets/img/bg.png
 assets/img/bg-linen.jpg
 assets/img/garbage.png
@@ -48,15 +46,11 @@ assets/img/icons.png
 http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-performance-semantics-storage.png
 assets/img/project_approved.png
 #
-# Github Buttons
-http://markdotto.github.com/github-buttons/github-icons.png
-http://markdotto.github.com/github-buttons/github-btn.html?user=h5bp&repo=mothereffinganimatedgif&type=fork&count=true
-http://markdotto.github.com/github-buttons/github-btn.html?user=paulirish&repo=lazyweb-requests&type=watch&count=true
-#
-# AppCache Status
-assets/js/cache.update.js
+# AppCache Status Reports
+# assets/js/cache.update.js
 # Network Status
 # assets/js/network.status.js
+#
 # jQuery Local
 assets/js/libraries/jquery-1.7.1.min.js
 # jQuery base64
@@ -100,14 +94,6 @@ http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 #
 # Google Analytics
 http://www.google-analytics.com/ga.js
-#
-# Github
-# API calls
-https://api.github.com/repos/paulirish/lazyweb-requests?callback=callback
-# MEAG.gif
-https://api.github.com/repos/h5bp/mothereffinganimatedgif?callback=callback
-# github icons - top right icons make this call
-https://api.github.com:443
 #
 # post-messaged data always returns back anim gif
 http://saveasbro.com/gif
