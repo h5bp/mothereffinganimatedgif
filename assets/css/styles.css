@@ -233,7 +233,6 @@ td { vertical-align: top }
     zoom: 1;
     *display: inline;
 }
-
 .button:hover,
 .button:focus,
 .button:active,
@@ -249,7 +248,6 @@ td { vertical-align: top }
     background-image:      -o-linear-gradient(#599bdc, #3072b3);
     background-image:         linear-gradient(#599bdc, #3072b3);
 }
-
 .button:active,
 .button.active {
     border-color: #2a65a0;
@@ -260,7 +258,6 @@ td { vertical-align: top }
     background-image:      -o-linear-gradient(#3072b3, #599bdc);
     background-image:         linear-gradient(#3072b3, #599bdc);
 }
-
 /* overrides extra padding on button elements in Firefox */
 .button::-moz-focus-inner {
     padding: 0;
@@ -287,7 +284,6 @@ td { vertical-align: top }
 .button.fork.icon:focus:before,
 .button.fork.icon:active:before { background-position: -12px -144px; }
 
-
 /*************************************************************/
 /*  Speed Project Approved
 /*************************************************************/
@@ -303,7 +299,6 @@ td { vertical-align: top }
          -o-transition: all linear .25s;
             transition: all linear .25s;
 }
-
 #speedProject:hover {
     width: 125px;
     right: 240px;
@@ -418,7 +413,8 @@ header h1 {
     width: 300px;
     text-shadow: none;
 }
-header p, footer p {
+header p,
+footer p {
     display: block;
     float: left;
     line-height: 11px;
@@ -443,7 +439,7 @@ footer p {
 }
 header .social {
     float: right;
-    margin: 18px 0 0 0;
+    margin: 18px 10px 0 0;
     padding: 0;
 }
 header .social li {
@@ -498,7 +494,6 @@ header .social li {
     position: relative;
     text-align: center;
 }
-
 #main .files .col:hover:before {
     content: "↻";
     font-size: 20px;
@@ -510,7 +505,6 @@ header .social li {
     right: 10px;
     z-index: 400;
 }
-
 #main .top .files .col.over {
     background: white;
 }
@@ -527,7 +521,6 @@ header .social li {
     max-width: 60px;
     max-height: 60px;
 }
-
 #main .files .col .fill {
     position: absolute;
     top: 0;
@@ -578,7 +571,6 @@ header .social li {
     display: block;
     background: url(../img/garbage.png) no-repeat 0 1px;
 }
-
 #main .top .controls .size,
 #main .top .controls .rate,
 #main .top .controls .quality {
@@ -643,7 +635,6 @@ header .social li {
 .onlyfiles {
     display: none;
 }
-
 .onlyfiles .play,
 .onlyfiles .clear,
 .onlyfiles #downloadlink,
@@ -663,7 +654,6 @@ header .social li {
     background-image:      -o-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
     background-image:         linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
 }
-
 .onlyfiles .play:before,
 .onlyfiles .clear:before,
 .onlyfiles #downloadlink:before,
@@ -677,12 +667,10 @@ header .social li {
     left: 6px;
     background: url(../img/icons.png) no-repeat 0 0;
 }
-
 .onlyfiles #sharelink:before{
     content: '⇒';
     background: none;
 }
-
 .onlyfiles .play {
     color: #001f2e;
     background-color: #4388c9;
@@ -690,7 +678,6 @@ header .social li {
 .onlyfiles .play:before {
     background-position: 0 -1px;
 }
-
 .onlyfiles .clear {
     color: #361d00;
     background-color: #bf7329;
@@ -698,7 +685,6 @@ header .social li {
 .onlyfiles .clear:before {
     background-position: 0 -21px;
 }
-
 .onlyfiles #downloadlink {
     color: #243800;
     background-color: #81bf29;
@@ -706,7 +692,6 @@ header .social li {
 .onlyfiles #downloadlink:before {
     background-position: 0 -40px;
 }
-
 .onlyfiles #sharelink {
     color: #243800;
     background-color: #81bf29;
