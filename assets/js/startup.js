@@ -8,7 +8,7 @@ Modernizr
     .addTest("download",    "download" in document.createElement("a"))
     .addTest("formdata",    !!(window.FormData && "append" in window.FormData.prototype));
 
-if(!Modernizr.download && $('#saveasbro').length == 0) {
+if( ( !Modernizr.bloburls || !Modernizr.blobbuilder || !Modernizr.download ) && $('#saveasbro').length == 0) {
     var iframe = document.createElement("iframe");
     iframe.src = "http://saveasbro.com/gif/";
     iframe.setAttribute('style', 'position: absolute; visibility: hidden; left: -999em;');
