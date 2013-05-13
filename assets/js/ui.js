@@ -8,7 +8,7 @@ var AnimateButtonView = Backbone.View.extend({
         this.model.on('animationGenerated', this.done, this);
     },
     generateAnimation: function(e) {
-        $(this.el).text("Setting up GIF encode...").prop("disabled", true);
+        $(this.el).text("Setting up GIF encode...");
         this.model.generateAnimatedGIF({
             progress: this.progress
         });
@@ -18,7 +18,7 @@ var AnimateButtonView = Backbone.View.extend({
         $(this.el).text( Math.round(percent*100)+"% encoded..." );
     },
     done: function (info) {
-        $(this.el).text( this.initialLabel ).prop("disabled", false);;
+        $(this.el).text( this.initialLabel );
     }
 });
 
