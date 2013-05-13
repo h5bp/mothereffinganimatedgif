@@ -74,7 +74,9 @@ var MFAApp = Backbone.Model.extend({
     },
     initialize: function() {
         this.set('settings', new AnimationSettings());
-        this.get('settings').on('change:rate change:quality change:animHeight change:animWidth', function() { this.set('animatedGIF', null); }, this);
+        this.get('settings').on('change:rate change:quality change:animHeight change:animWidth', function() { 
+            this.set('animatedGIF', null); 
+        }, this);
 
         this.set('timeline', new Timeline());
     },
