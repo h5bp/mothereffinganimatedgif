@@ -99,6 +99,13 @@ var MFAApp = Backbone.Model.extend({
     },
     generateAnimatedGIF: function() {
         if(this.get('animatedGIF') === null) {
+            var self = this;
+            var progress = function (percent) {
+                self.gifEncodeProgress(percent);
+            };
+            var done = function (info) {
+                self.gifEncodeDone(info);          
+            };
             this.set('animatedGIF', new MFAnimatedGIF({
                 images: this.getRawImages(),
                 rotations: this.getRotations(),
@@ -106,14 +113,21 @@ var MFAApp = Backbone.Model.extend({
                 quality : this.get('settings').get('quality'),
                 repeat: 0,
                 height: this.get('settings').get('animHeight'),
-                width : this.get('settings').get('animWidth')
+                width : this.get('settings').get('animWidth'),
+                progress: progress,
+                done: done
             }));
         }
-        this.trigger('animationGenerated', this.get('animatedGIF'));
     },
-    getAnimatedGIF: function() {
-        this.generateAnimatedGIF();
-        return this.get('animatedGIF');
+    gifEncodeProgress: function(percent) {
+        this.trigger('gifEncodeProgress', percent);
+    },
+    gifEncodeDone: function(info) {
+        this.set('omgAnimatedGIF', info);
+        this.trigger('animationGenerated', info);
+    },
+    gifEncodeError: function(error) {
+        this.trigger('gifEncodeError', error);
     }
 });
 
