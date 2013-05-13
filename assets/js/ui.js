@@ -2,9 +2,23 @@ var AnimateButtonView = Backbone.View.extend({
     events: {
         'click': 'generateAnimation'
     },
+    initialize: function() {
+        this.initialLabel = $(this.el).text();
+        this.model.on('gifEncodeProgress', this.progress, this);
+        this.model.on('animationGenerated', this.done, this);
+    },
     generateAnimation: function(e) {
-        this.model.generateAnimatedGIF();
+        $(this.el).text("Setting up GIF encode...").prop("disabled", true);
+        this.model.generateAnimatedGIF({
+            progress: this.progress
+        });
         return false;
+    },
+    progress: function (percent) {
+        $(this.el).text( Math.round(percent*100)+"% encoded..." );
+    },
+    done: function (info) {
+        $(this.el).text( this.initialLabel ).prop("disabled", false);;
     }
 });
 
@@ -27,8 +41,9 @@ var ShareButtonView = Backbone.View.extend({
         this.model.on('animationGenerated', this.showShareLink, this);
         this.model.on('restart', this.hideShareLink, this);
     },
-    showShareLink: function(animatedGIF) {
-        if(animatedGIF) {
+    showShareLink: function(omgAnimatedGIF) {
+        if(omgAnimatedGIF) {
+            this.omgAnimatedGIF = omgAnimatedGIF;
             this.$el.show();
         }
     },
@@ -36,13 +51,15 @@ var ShareButtonView = Backbone.View.extend({
         var filename = "animated."+((+new Date()) + "").substr(8);
 
         // Imgur takes the image data, filename, title, caption, success callback and error callback
-        ShareGIFWith.imgur(this.model.getAnimatedGIF().rawDataURL(), filename, '', '', 
-        function(deletePage, imgurPage, largeThumbnail, original, smallSquare) {
-            prompt('Boom! Your image is now available on imgur. Copy the link below:', imgurPage);
-        }, 
-        function() {
-            alert('Could not upload image to imgur. :/  Sorry.');
-        });
+        ShareGIFWith.imgur(
+            this.omgAnimatedGIF.rawDataURL, filename, '', '', 
+            function(deletePage, imgurPage, largeThumbnail, original, smallSquare) {
+                prompt('Boom! Your image is now available on imgur. Copy the link below:', imgurPage);
+            }, 
+            function() {
+                alert('Could not upload image to imgur. :/  Sorry.');
+            }
+        );
 
         return false;
     },
@@ -56,8 +73,8 @@ var DownloadButtonView = Backbone.View.extend({
         this.model.on('animationGenerated', this.showDownloadLink, this);
         this.model.on('restart', this.hideDownloadLink, this);
     },
-    showDownloadLink: function(animatedGIF) {
-        if(animatedGIF) {
+    showDownloadLink: function(omgAnimatedGIF) {
+        if(omgAnimatedGIF) {
             window.URL = window.webkitURL || window.URL;
             window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
 
@@ -68,7 +85,7 @@ var DownloadButtonView = Backbone.View.extend({
 
             if(Modernizr.download && Modernizr.bloburls && Modernizr.blobbuilder) {
                 downloadLink.attr('download', filename + '.gif');
-                downloadLink.attr('href', animatedGIF.binaryURL(filename));
+                downloadLink.attr('href', omgAnimatedGIF.binaryURL);
                 downloadLink.show();
 
                 downloadLink.on('click', function(e) {
@@ -88,7 +105,7 @@ var DownloadButtonView = Backbone.View.extend({
                 };
 
                 var iframe = document.querySelector('#saveasbro');
-                iframe.contentWindow.postMessage(JSON.stringify({name:filename, data: animatedGIF.rawDataURL(), formdata: Modernizr.formdata}),"http://saveasbro.com/gif/");
+                iframe.contentWindow.postMessage(JSON.stringify({name:filename, data: omgAnimatedGIF.rawDataURL, formdata: Modernizr.formdata}),"http://saveasbro.com/gif/");
             }
         }
     },
@@ -102,12 +119,12 @@ var AnimatedGIFView = Backbone.View.extend({
         this.model.on('animationGenerated', this.showAnimatedGIF, this);
         this.model.on('restart', this.hideAnimatedGIF, this);
     },
-    showAnimatedGIF: function(animatedGIF) {
-        if(animatedGIF) {
-            this.$el.attr('src', animatedGIF.dataURL()).show();
+    showAnimatedGIF: function(omgAnimatedGIF) {
+        if(omgAnimatedGIF) {
+            this.$el.attr('src', omgAnimatedGIF.dataURL).show();
         }
     },
-    hideAnimatedGIF: function(animatedGIF) {
+    hideAnimatedGIF: function(omgAnimatedGIF) {
         this.$el.attr("src", "about:blank").hide();
     }
 });
@@ -302,7 +319,7 @@ var SizeSliderView = Backbone.View.extend({
 
 var SettingsView = Backbone.View.extend({
     initialize: function() {
-      this.qualitySliderView = new QualitySliderView({model: this.model.get('settings'), el: this.$el.find('.quality')});
+      // this.qualitySliderView = new QualitySliderView({model: this.model.get('settings'), el: this.$el.find('.quality')});
       this.rateSliderView = new RateSliderView({model: this.model.get('settings'), el: this.$el.find('.rate')});
       this.sizeSliderView = new SizeSliderView({model: this.model, el: this.$el.find('.size')});
     }

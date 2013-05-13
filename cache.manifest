@@ -6,7 +6,7 @@ CACHE MANIFEST
 # https://github.com/paulirish/lazyweb-requests/issues/53
 #
 # Version Control
-# v1.1.9 12-05-2012
+# v1.1.9 2013-05-13
 #
 # Handy Dandy Developer Tools
 # CHROME chrome://appcache-internals
@@ -57,12 +57,12 @@ assets/js/libraries/jquery-1.7.1.min.js
 assets/js/libraries/jquery.base64.min.js
 # jQuery Rotate Compressed
 assets/js/libraries/jQueryRotateCompressed.js
-# LZWEncoder
-assets/js/libraries/LZWEncoder.js
 # NeuQuant
 assets/js/libraries/NeuQuant.js
-# GIFEncoder
-assets/js/libraries/GIFEncoder.js
+# OMGGIF
+assets/js/libraries/omggif.js
+# OMGGIF worker
+assets/js/libraries/omggif-worker.js
 # File Reader
 assets/js/libraries/filereader.js
 # Modernizr
