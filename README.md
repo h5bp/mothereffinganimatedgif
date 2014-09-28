@@ -15,4 +15,4 @@ Take it for a test spin &rarr; [http://mothereffinganimatedgif.com](http://mothe
 
 ![24 hr speed project](http://mothereffinganimatedgif.com/assets/img/project_approved.png)
 
-probably unconsciously inspired by &rarr; @maxogden's [kathyleegiffer](https://github.com/maxogden/kathyleegiffer)
+probably subconsciously inspired by &rarr; [@maxogden](https://github.com/maxogden)'s [kathyleegiffer](https://github.com/maxogden/kathyleegiffer)
