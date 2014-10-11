@@ -1,8 +1,8 @@
 #MOTHEREFFINGANIMATEDGIF
 ##Drag + Drop, Client-side, Animated GIF Creator
 
-This is an [H5BP](http://h5bp.github.com) community project. [H5BP](http://h5bp.github.com) is where you'll find a bunch of people creating open source software. 
-[Fork](http://h5bp.github.com) a project and get involved!
+This is an [H5BP](https://h5bp.github.com) community project. [H5BP](https://h5bp.github.com) is where you'll find a bunch of people creating open source software. 
+[Fork](https://h5bp.github.com) a project and get involved!
 
 File tickets &rarr; [here](https://github.com/h5bp/mothereffinganimatedgif/issues) if you want something changed or better yet, just change it yo'self!
 
