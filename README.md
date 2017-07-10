@@ -1,5 +1,5 @@
-#MOTHEREFFINGANIMATEDGIF
-##Drag + Drop, Client-side, Animated GIF Creator
+# MOTHEREFFINGANIMATEDGIF
+## Drag + Drop, Client-side, Animated GIF Creator
 
 This is an [H5BP](http://h5bp.github.com) community project. [H5BP](http://h5bp.github.com) is where you'll find a bunch of people creating open source software. 
 [Fork](http://h5bp.github.com) a project and get involved!
