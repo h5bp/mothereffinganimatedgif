@@ -695,6 +695,7 @@ header .social li {
 .onlyfiles #sharelink {
     color: #243800;
     background-color: #81bf29;
+    display:none !important;
 }
 .onlyfiles #sharelink:before {
     background-position: 0 -40px;
