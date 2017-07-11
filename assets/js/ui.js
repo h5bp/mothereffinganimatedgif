@@ -75,7 +75,7 @@ var DownloadButtonView = Backbone.View.extend({
     },
     showDownloadLink: function(omgAnimatedGIF) {
         if(omgAnimatedGIF) {
-            window.URL = window.webkitURL || window.URL;
+            window.URL = window.URL || window.webkitURL;
             var filename = "animated."+((+new Date()) + "").substr(8);
 
             var downloadLink = this.$el;
