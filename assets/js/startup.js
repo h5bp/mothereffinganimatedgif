@@ -3,21 +3,12 @@
 
 // test to see if we can do cool download or fallback style.
 Modernizr
-    .addTest("blobbuilder", !!(window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder))
     .addTest("bloburls",    !!(window.URL && window.URL.createObjectURL || window.webkitURL && window.webkitURL.createObjectURL))
     .addTest("download",    "download" in document.createElement("a"))
     .addTest("formdata",    !!(window.FormData && "append" in window.FormData.prototype));
 
-if( ( !Modernizr.bloburls || !Modernizr.blobbuilder || !Modernizr.download ) && $('#saveasbro').length == 0) {
-    var iframe = document.createElement("iframe");
-    iframe.src = "http://saveasbro.com/gif/";
-    iframe.setAttribute('style', 'position: absolute; visibility: hidden; left: -999em;');
-    iframe.id = "saveasbro";
-    document.body.appendChild(iframe);
-}
-
 // Bail out if the browser doesn't support required features
-// blobbuilder and a[download] are not required, as there is a fallback
+// a[download] are is required, as there is a fallback (not really)
 var support = FileReaderJS.enabled && Modernizr.draganddrop &&
               document.querySelector && Modernizr.postmessage && window.JSON;
 if (!support) {

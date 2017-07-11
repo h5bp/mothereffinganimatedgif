@@ -52,10 +52,10 @@ var ShareButtonView = Backbone.View.extend({
 
         // Imgur takes the image data, filename, title, caption, success callback and error callback
         ShareGIFWith.imgur(
-            this.omgAnimatedGIF.rawDataURL, filename, '', '', 
+            this.omgAnimatedGIF.rawDataURL, filename, '', '',
             function(deletePage, imgurPage, largeThumbnail, original, smallSquare) {
                 prompt('Boom! Your image is now available on imgur. Copy the link below:', imgurPage);
-            }, 
+            },
             function() {
                 alert('Could not upload image to imgur. :/  Sorry.');
             }
@@ -75,15 +75,13 @@ var DownloadButtonView = Backbone.View.extend({
     },
     showDownloadLink: function(omgAnimatedGIF) {
         if(omgAnimatedGIF) {
-            window.URL = window.webkitURL || window.URL;
-            window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
-
+            window.URL = window.URL || window.webkitURL;
             var filename = "animated."+((+new Date()) + "").substr(8);
 
             var downloadLink = this.$el;
             downloadLink.hide();
 
-            if(Modernizr.download && Modernizr.bloburls && Modernizr.blobbuilder) {
+            if(Modernizr.download && Modernizr.bloburls) {
                 downloadLink.attr('download', filename + '.gif');
                 downloadLink.attr('href', omgAnimatedGIF.binaryURL);
                 downloadLink.show();
@@ -95,17 +93,7 @@ var DownloadButtonView = Backbone.View.extend({
                   }, 1500);
                 });
             } else {
-                window.onmessage = function(e) {
-                    e = e || window.event;
-
-                    var origin = e.origin || e.domain || e.uri;
-                    if(origin !== "http://saveasbro.com") return;
-                    downloadLink.attr('href', e.data);
-                    downloadLink.show();
-                };
-
-                var iframe = document.querySelector('#saveasbro');
-                iframe.contentWindow.postMessage(JSON.stringify({name:filename, data: omgAnimatedGIF.rawDataURL, formdata: Modernizr.formdata}),"http://saveasbro.com/gif/");
+                alert('Sorry, your browser doesn\'t support both a[download] and blobURLs');
             }
         }
     },
@@ -218,7 +206,7 @@ var TimelineView = Backbone.View.extend({
         if (e.originalEvent.preventDefault) {
             e.originalEvent.preventDefault(); // Allows us to drop.
         }
-    
+
         var dropTarget = $(e.currentTarget);
         var swapTarget = this.dragSrcEl_;
 
