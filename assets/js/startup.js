@@ -13,9 +13,6 @@ var support = FileReaderJS.enabled && Modernizr.draganddrop &&
               document.querySelector && Modernizr.postmessage && window.JSON;
 if (!support) {
     $("body").addClass("disabled");
-    var caniscript = document.createElement('script');
-    caniscript.src = 'http://api.html5please.com/json+filereader+draganddrop+querySelector+postmessage.json?callback=canicallback&texticon&html&readable';
-    document.body.appendChild(caniscript);
 } else {
 
     window.appView = new MFAAppView({model: new MFAApp()});
