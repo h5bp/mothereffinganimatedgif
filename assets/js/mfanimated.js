@@ -44,8 +44,8 @@ var MFAnimatedGIF = function(opts) {
                 opts.progress(e.data.data);
             } else if (e.data.type === "gif") {
                 var info = e.data;
-                info.binaryURL = _binaryURL( e.data.data );
-                info.rawDataURL = _rawDataURL( e.data.data );
+                info.binaryURL = _binaryURL( e.data.buffer );
+                info.rawDataURL = _rawDataURL( e.data.string );
                 info.dataURL = _dataURL( info.rawDataURL );
                 opts.done(info);
             }

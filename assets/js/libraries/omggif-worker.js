@@ -129,7 +129,8 @@ self.onmessage = function(event) {
 
   self.postMessage({
     type: "gif", 
-    data: gifString,
+    buffer: buffer,
+    string: gifString,
     frameCount: framesLength,
     encodeTime: Date.now()-startTime
   });
